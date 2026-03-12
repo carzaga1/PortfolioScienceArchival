@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Research Portfolio — Science & Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS — SCIENCE ARCHIVAL PALETTE
+   Dark vellum · Prussian ink · Cobalt annotation
+═══════════════════════════════════════════ */
+:root {
+  --vellum:       #f0e9d6;
+  --vellum-dark:  #e5dbc4;
+  --vellum-mid:   #d8ccb0;
+  --ink:          #181510;
+  --ink-2:        #2e2a20;
+  --ink-3:        #4a4535;
+  --cobalt:       #1d3a8a;
+  --cobalt-hi:    rgba(29,58,138,0.68);
+  --cobalt-tint:  rgba(29,58,138,0.09);
+  --red:          #8b1a1a;
+  --green-data:   #1a5c3a;
+
+  --f-serif:  'Libre Baskerville', Georgia, serif;
+  --f-mono:   'Courier Prime', 'Courier New', monospace;
+  --f-code:   'Source Code Pro', monospace;
+  --f-hand:   'Caveat', cursive;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── OUTER STAGE ── */
+body {
+  background: #111009;
+  min-height: 100vh;
+  padding: 3rem 1rem 8rem;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(29,58,138,0.07) 0%, transparent 70%);
+}
+
+/* ── DOCUMENT SHEET ── */
+.doc {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--vellum);
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.12),
+    6px 6px 0 rgba(0,0,0,0.08),
+    12px 12px 0 rgba(0,0,0,0.05),
+    0 40px 100px rgba(0,0,0,0.7);
+  animation: docIn 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes docIn {
+  from { opacity:0; transform: translateY(30px) rotate(-0.4deg); }
+  to   { opacity:1; transform: translateY(0) rotate(0); }
+}
+
+/* paper grain */
+.doc::after {
+  content:''; pointer-events:none;
+  position:absolute; inset:0; z-index:0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.doc > * { position:relative; z-index:1; }
+
+/* ════════════════════════════════
+   NAV — DOCUMENT TABS
+════════════════════════════════ */
+nav.doc-nav {
+  display: flex;
+  border-bottom: 2px solid var(--ink);
+  background: var(--vellum-dark);
+  overflow-x: auto;
+}
+
+.nav-tab {
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.4rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.nav-tab:hover { background: var(--vellum); color: var(--ink); }
+.nav-tab.active {
+  background: var(--vellum);
+  color: var(--cobalt);
+  border-bottom-color: var(--cobalt);
+  font-weight: 600;
+}
+
+/* ════════════════════════════════
+   PAGES
+════════════════════════════════ */
+.page { display: none; padding: 3.5rem 4.5rem; }
+.page.active { display: block; }
+
+@media(max-width:600px){
+  .page { padding: 2rem 1.5rem; }
+}
+
+/* ════════════════════════════════
+   LETTERHEAD (shared)
+════════════════════════════════ */
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.2rem;
+  border-bottom: 2.5px solid var(--ink);
+  margin-bottom: 2.5rem;
+}
+
+.lh-left .brand {
+  font-family: var(--f-code);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.lh-left .brand-rule {
+  width: 36px; height: 2.5px;
+  background: var(--ink);
+  margin-top: 5px;
+}
+
+.lh-left .brand-sub {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  margin-top: 3px;
+  opacity: 0.65;
+}
+
+.lh-right {
+  text-align: right;
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.lh-right strong {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ════════════════════════════════
+   TYPOGRAPHY PRIMITIVES
+════════════════════════════════ */
+.page-num {
+  position:absolute; top:1.2rem; right:1.8rem;
+  font-family: var(--f-code);
+  font-size:0.65rem; letter-spacing:0.25em;
+  color:var(--ink-3); opacity:0.4;
+}
+
+.section-label {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::after {
+  content:''; flex:1; height:1px;
+  background: var(--cobalt); opacity:0.25;
+}
+
+.body-text {
+  font-family: var(--f-mono);
+  font-size: 0.855rem;
+  line-height: 1.95;
+  color: var(--ink-2);
+  margin-bottom: 1.25rem;
+}
+
+.serif-body {
+  font-family: var(--f-serif);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--ink-2);
+  margin-bottom: 1.25rem;
+}
+
+mark, .hl {
+  background: var(--cobalt-hi);
+  color: #fff;
+  padding: 0.06em 0.28em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-radius: 1px;
+}
+
+.hl-subtle {
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+  padding: 0.05em 0.2em;
+  font-weight: 700;
+  border-radius: 1px;
+}
+
+.dashed-rule {
+  border: none;
+  border-top: 1px dashed var(--ink-3);
+  opacity: 0.3;
+  margin: 2rem 0;
+}
+
+.salutation {
+  font-family: var(--f-hand);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  transform: rotate(-0.8deg);
+  display: inline-block;
+}
+
+/* ════════════════════════════════
+   PAGE 0 — PITCH / COVER LETTER
+════════════════════════════════ */
+#page-pitch .salut-row {
+  display:flex; justify-content:flex-end;
+  margin-bottom:1.8rem;
+}
+
+.proposal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+@media(max-width:560px){ .proposal-grid{ grid-template-columns:1fr; } }
+
+.p-card {
+  border: 1px solid var(--ink);
+  padding: 1rem 1.1rem;
+  background: var(--vellum-dark);
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: default;
+}
+.p-card:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.p-card-num {
+  font-family:var(--f-code); font-size:0.58rem;
+  letter-spacing:0.2em; color:var(--cobalt); margin-bottom:0.35rem;
+}
+.p-card-title {
+  font-family:var(--f-serif); font-size:0.95rem;
+  font-weight:700; margin-bottom:0.4rem; color:var(--ink);
+}
+.p-card-body {
+  font-family:var(--f-mono); font-size:0.71rem;
+  line-height:1.7; color:var(--ink-3);
+}
+.p-card-tag {
+  display:inline-block; margin-top:0.5rem;
+  font-family:var(--f-code); font-size:0.58rem;
+  letter-spacing:0.15em; padding:0.1em 0.4em;
+  border:1px solid var(--cobalt); color:var(--cobalt);
+  text-transform:uppercase;
+}
+
+.token-block {
+  background: var(--ink);
+  color: var(--vellum);
+  padding: 1.2rem 1.5rem;
+  font-family: var(--f-code);
+  font-size: 0.72rem;
+  line-height: 2;
+  margin: 1.2rem 0;
+}
+.token-block .cm { color: rgba(240,233,214,0.3); }
+.token-block .ky { color: #7eb8f7; }
+.token-block .vl { color: #f0c06a; }
+.token-block .pt { color: rgba(240,233,214,0.45); }
+
+.stack-row {
+  display:flex; flex-wrap:wrap; gap:0.45rem; margin:1rem 0;
+}
+.stk {
+  font-family:var(--f-code); font-size:0.62rem;
+  letter-spacing:0.1em; padding:0.2em 0.6em;
+  background:var(--ink); color:var(--vellum);
+}
+.stk.o {
+  background:transparent;
+  border:1px solid var(--ink); color:var(--ink);
+}
+
+/* decision tree */
+.dt-section {
+  margin-top:2.5rem; padding-top:1.5rem;
+  border-top: 2px dashed rgba(0,0,0,0.2);
+}
+.dt-wrap { display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap; }
+.dt-root { font-family:var(--f-hand); font-size:1.35rem; font-weight:700; align-self:center; }
+.dt-branches {
+  border-left: 2px solid var(--ink);
+  padding-left:1rem; margin-left:0.5rem;
+  display:flex; flex-direction:column; gap:0.15rem;
+}
+.dt-b {
+  font-family:var(--f-mono); font-size:0.74rem;
+  color:var(--ink); display:flex; align-items:center; gap:0.5rem; padding:0.15rem 0;
+}
+.dt-b::before { content:'→'; color:var(--cobalt); font-weight:700; }
+.dt-b.dead { opacity:0.35; text-decoration:line-through; }
+.dt-foot {
+  font-family:var(--f-code); font-size:0.58rem; letter-spacing:0.15em;
+  color:var(--ink-3); opacity:0.45; margin-top:0.6rem; text-align:right;
+}
+
+/* stamp */
+.stamp {
+  position:absolute; bottom:5rem; left:50%; transform:translateX(-50%) rotate(-7deg);
+  width:76px; height:76px; border-radius:50%;
+  border:3px solid var(--cobalt); opacity:0.18; pointer-events:none;
+  display:flex; align-items:center; justify-content:center;
+}
+.stamp-inner {
+  font-family:var(--f-code); font-size:0.42rem; letter-spacing:0.15em;
+  text-align:center; color:var(--cobalt); text-transform:uppercase; line-height:1.6;
+}
+
+/* ════════════════════════════════
+   PAGE 1 — RESEARCH & PUBLICATIONS
+════════════════════════════════ */
+.pub-list { margin: 1.2rem 0; }
+
+.pub-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  animation: fadeUp 0.5s ease both;
+}
+.pub-item:last-child { border-bottom:none; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.pub-year {
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  color: var(--cobalt);
+  letter-spacing:0.1em;
+  padding-top:0.15rem;
+}
+
+.pub-content {}
+.pub-title {
+  font-family: var(--f-serif);
+  font-size: 0.92rem;
+  font-weight:700;
+  color: var(--ink);
+  line-height:1.4;
+  margin-bottom:0.25rem;
+}
+.pub-meta {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  line-height:1.6;
+  margin-bottom:0.35rem;
+}
+.pub-abstract {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  line-height:1.7;
+  font-style:italic;
+}
+.pub-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.4rem; }
+.pub-tag {
+  font-family:var(--f-code); font-size:0.58rem;
+  letter-spacing:0.12em; padding:0.1em 0.45em;
+  background:var(--cobalt-tint); color:var(--cobalt);
+  text-transform:uppercase; border-radius:0;
+}
+.pub-tag.red { background:rgba(139,26,26,0.08); color:var(--red); }
+.pub-tag.green { background:rgba(26,92,58,0.1); color:var(--green-data); }
+
+.filter-row {
+  display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;
+}
+.filter-btn {
+  font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em;
+  padding:0.25em 0.7em; background:transparent;
+  border:1px solid var(--ink-3); color:var(--ink-3);
+  cursor:pointer; text-transform:uppercase;
+  transition:all 0.12s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background:var(--ink); color:var(--vellum);
+  border-color:var(--ink);
+}
+
+/* ════════════════════════════════
+   PAGE 2 — PROJECTS / CASE STUDIES
+════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+@media(max-width:560px){ .projects-grid{ grid-template-columns:1fr; } }
+
+.proj-card {
+  border:1px solid var(--ink);
+  padding:1.2rem;
+  background:var(--vellum-dark);
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.proj-card:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 4px 4px 0 var(--cobalt);
+}
+.proj-card::before {
+  content:'';
+  position:absolute; top:0; left:0;
+  width:3px; height:100%;
+  background:var(--cobalt);
+  transform:scaleY(0);
+  transform-origin:bottom;
+  transition:transform 0.2s ease;
+}
+.proj-card:hover::before { transform:scaleY(1); }
+
+.proj-num {
+  font-family:var(--f-code); font-size:0.58rem;
+  letter-spacing:0.2em; color:var(--cobalt);
+  margin-bottom:0.4rem;
+}
+.proj-title {
+  font-family:var(--f-serif); font-size:1rem;
+  font-weight:700; color:var(--ink);
+  margin-bottom:0.5rem; line-height:1.3;
+}
+.proj-body {
+  font-family:var(--f-mono); font-size:0.72rem;
+  line-height:1.7; color:var(--ink-3);
+  margin-bottom:0.6rem;
+}
+.proj-stack { display:flex; gap:0.35rem; flex-wrap:wrap; }
+.proj-tech {
+  font-family:var(--f-code); font-size:0.58rem;
+  padding:0.1em 0.4em; letter-spacing:0.1em;
+  border:1px solid var(--ink-3); color:var(--ink-3);
+  text-transform:uppercase;
+}
+
+.proj-status {
+  position:absolute; top:0.75rem; right:0.75rem;
+  font-family:var(--f-code); font-size:0.55rem; letter-spacing:0.15em;
+  padding:0.15em 0.4em; text-transform:uppercase;
+}
+.proj-status.active { background:rgba(26,92,58,0.12); color:var(--green-data); border:1px solid var(--green-data); }
+.proj-status.ongoing { background:rgba(29,58,138,0.1); color:var(--cobalt); border:1px solid var(--cobalt); }
+.proj-status.archived { background:rgba(0,0,0,0.06); color:var(--ink-3); border:1px solid var(--ink-3); }
+
+/* ════════════════════════════════
+   PAGE 3 — CV / ABOUT
+════════════════════════════════ */
+.cv-header {
+  display:grid; grid-template-columns:1fr auto;
+  gap:2rem; margin-bottom:2rem; align-items:start;
+}
+@media(max-width:560px){ .cv-header{ grid-template-columns:1fr; } }
+
+.cv-name {
+  font-family:var(--f-serif); font-size:2rem;
+  font-weight:700; color:var(--ink); line-height:1.1;
+  margin-bottom:0.3rem;
+}
+.cv-title-line {
+  font-family:var(--f-mono); font-size:0.8rem;
+  color:var(--cobalt); letter-spacing:0.08em;
+  margin-bottom:0.6rem;
+}
+.cv-bio {
+  font-family:var(--f-serif); font-style:italic;
+  font-size:0.85rem; line-height:1.8; color:var(--ink-2);
+}
+.cv-contact-block {
+  font-family:var(--f-code); font-size:0.65rem;
+  line-height:2; color:var(--ink-3); text-align:right;
+  letter-spacing:0.05em;
+}
+.cv-contact-block a { color:var(--cobalt); text-decoration:none; }
+
+.cv-section { margin:1.8rem 0; }
+.cv-entry {
+  display:grid; grid-template-columns:110px 1fr;
+  gap:1rem; padding:0.7rem 0;
+  border-bottom:1px dashed rgba(0,0,0,0.12);
+}
+.cv-entry:last-child { border-bottom:none; }
+@media(max-width:460px){ .cv-entry{ grid-template-columns:1fr; gap:0.25rem; } }
+
+.cv-date {
+  font-family:var(--f-code); font-size:0.63rem;
+  letter-spacing:0.08em; color:var(--cobalt);
+  padding-top:0.1rem;
+}
+.cv-entry-title {
+  font-family:var(--f-serif); font-weight:700;
+  font-size:0.88rem; color:var(--ink); margin-bottom:0.15rem;
+}
+.cv-entry-inst {
+  font-family:var(--f-mono); font-size:0.73rem;
+  color:var(--ink-3); margin-bottom:0.2rem; font-style:italic;
+}
+.cv-entry-desc {
+  font-family:var(--f-mono); font-size:0.71rem;
+  line-height:1.65; color:var(--ink-3);
+}
+
+.skills-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:0.75rem; margin-top:1rem;
+}
+@media(max-width:500px){ .skills-grid{ grid-template-columns:1fr 1fr; } }
+
+.skill-group {}
+.skill-group-title {
+  font-family:var(--f-code); font-size:0.6rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--cobalt); margin-bottom:0.4rem;
+  padding-bottom:0.2rem;
+  border-bottom:1px solid var(--cobalt-hi);
+}
+.skill-item {
+  font-family:var(--f-mono); font-size:0.72rem;
+  color:var(--ink-2); line-height:1.8;
+  padding-left:0.6rem;
+  border-left:1px solid rgba(0,0,0,0.1);
+}
+
+/* ════════════════════════════════
+   PAGE 4 — CONTACT / COLOPHON
+════════════════════════════════ */
+.contact-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2rem; margin:1.5rem 0;
+}
+@media(max-width:560px){ .contact-grid{ grid-template-columns:1fr; } }
+
+.reply-slip {
+  border:1px solid var(--ink);
+  padding:1.5rem;
+  background:var(--vellum-dark);
+  position:relative;
+}
+.reply-slip::before {
+  content:'— cut here and return —';
+  position:absolute; top:-0.6rem; left:50%; transform:translateX(-50%);
+  background:var(--vellum-dark);
+  padding:0 0.6rem;
+  font-family:var(--f-code); font-size:0.55rem;
+  letter-spacing:0.15em; color:var(--ink-3);
+  white-space:nowrap;
+}
+.reply-slip-title {
+  font-family:var(--f-serif); font-size:1rem;
+  font-weight:700; color:var(--ink); margin-bottom:1rem;
+}
+.form-field {
+  margin-bottom:1rem;
+}
+.form-field label {
+  display:block; font-family:var(--f-code);
+  font-size:0.6rem; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--cobalt);
+  margin-bottom:0.3rem;
+}
+.form-field input,
+.form-field textarea {
+  width:100%;
+  background:var(--vellum);
+  border:none; border-bottom:1px solid var(--ink);
+  font-family:var(--f-mono); font-size:0.78rem;
+  color:var(--ink); padding:0.4em 0;
+  outline:none; resize:none;
+  transition:border-color 0.15s;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  border-bottom-color:var(--cobalt);
+}
+.form-field textarea { height:80px; }
+
+.submit-btn {
+  font-family:var(--f-code); font-size:0.65rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  padding:0.5em 1.2em;
+  background:var(--ink); color:var(--vellum);
+  border:none; cursor:pointer;
+  transition:background 0.15s;
+  width:100%;
+}
+.submit-btn:hover { background:var(--cobalt); }
+
+.colophon-block {
+  font-family:var(--f-mono); font-size:0.75rem;
+  line-height:1.9; color:var(--ink-3);
+}
+.colophon-block strong {
+  font-family:var(--f-code); font-size:0.6rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--cobalt); display:block; margin-bottom:0.4rem;
+  margin-top:1.2rem;
+}
+.colophon-block strong:first-child { margin-top:0; }
+
+.social-row {
+  display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1.2rem;
+}
+.social-link {
+  font-family:var(--f-code); font-size:0.6rem;
+  letter-spacing:0.12em; text-transform:uppercase;
+  padding:0.25em 0.6em;
+  border:1px solid var(--ink); color:var(--ink);
+  text-decoration:none;
+  transition:all 0.12s;
+}
+.social-link:hover { background:var(--cobalt); border-color:var(--cobalt); color:#fff; }
+
+/* ════════════════════════════════
+   REVEAL ANIMATION
+════════════════════════════════ */
+.reveal {
+  opacity:0; transform:translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.v { opacity:1; transform:translateY(0); }
+.reveal:nth-child(2){ transition-delay:0.08s; }
+.reveal:nth-child(3){ transition-delay:0.16s; }
+.reveal:nth-child(4){ transition-delay:0.24s; }
+.reveal:nth-child(5){ transition-delay:0.32s; }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <!-- NAV TABS -->
+  <nav class="doc-nav">
+    <div class="nav-tab active" data-page="page-pitch">§ Pitch Proposal</div>
+    <div class="nav-tab" data-page="page-research">§ Research &amp; Publications</div>
+    <div class="nav-tab" data-page="page-projects">§ Projects</div>
+    <div class="nav-tab" data-page="page-cv">§ CV / About</div>
+    <div class="nav-tab" data-page="page-contact">§ Contact</div>
+  </nav>
+
+  <!-- ══════════════════════════════
+       PAGE: PITCH PROPOSAL
+  ══════════════════════════════ -->
+  <section class="page active" id="page-pitch">
+    <span class="page-num">0 0 1</span>
+
+    <header class="letterhead reveal">
+      <div class="lh-left">
+        <div class="brand">Portfolio</div>
+        <div class="brand-rule"></div>
+        <div class="brand-sub">Science &amp; Technology · Archival Method</div>
+      </div>
+      <div class="lh-right">
+        <strong>Pitch Proposal</strong>
+        Zürich, March 2026<br>
+        Science / Technology<br>
+        Archival &amp; Scholarly
+      </div>
+    </header>
+
+    <div class="salut-row reveal">
+      <span class="salutation">À qui de droit,</span>
+    </div>
+
+    <p class="body-text reveal">
+      Chers collègues, collaborateurs, et curieux — the next iteration of your 
+      professional presence will take place at <mark>the intersection of scientific 
+      rigour and archival craft</mark>. A portfolio built not merely to impress, 
+      but to <em>document</em> with precision: your research, your method, your 
+      contributions to knowledge.
+    </p>
+
+    <p class="body-text reveal">
+      We will speak of identity and permanence. Your agenda will necessarily include 
+      the rubric of <span class="hl-subtle">"scholarly presence online"</span> — 
+      pensez-y. Pour faciliter the work of those who encounter your research, 
+      kindly consider the architecture below with all due urgency.
+    </p>
+
+    <hr class="dashed-rule reveal">
+
+    <div class="reveal">
+      <div class="section-label">§ 01 — Portfolio Sections</div>
+      <div class="proposal-grid">
+        <div class="p-card">
+          <div class="p-card-num">— 01 —</div>
+          <div class="p-card-title">Research &amp; Publications</div>
+          <div class="p-card-body">A filterable, chronological archive of papers, preprints, conference proceedings, and ongoing inquiries. Each entry typed as a document card — journal, DOI, abstract, status. Annotated with cobalt highlights on key contributions.</div>
+          <span class="p-card-tag">Archival</span>
+        </div>
+        <div class="p-card">
+          <div class="p-card-num">— 02 —</div>
+          <div class="p-card-title">Projects / Case Studies</div>
+          <div class="p-card-body">Technical projects and applied research rendered as case studies. Decision-tree navigation between projects — the OULIPO branching diagram becomes your navigation metaphor. Stack, method, outcome, status.</div>
+          <span class="p-card-tag">Applied</span>
+        </div>
+        <div class="p-card">
+          <div class="p-card-num">— 03 —</div>
+          <div class="p-card-title">CV / About Me</div>
+          <div class="p-card-body">A living curriculum vitae rendered as a typeset document. Education, experience, and skills as archival entries. Exportable to PDF via CSS @print. Your scientific identity in one page.</div>
+          <span class="p-card-tag">Identity</span>
+        </div>
+        <div class="p-card">
+          <div class="p-card-num">— 04 —</div>
+          <div class="p-card-title">Contact / Colophon</div>
+          <div class="p-card-body">A contact form styled as an OULIPO reply slip — cut here, return to sender. Colophon naming every tool, typeface, and method used. In the tradition of scholarly transparency.</div>
+          <span class="p-card-tag">Colophon</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="dashed-rule reveal">
+
+    <div class="reveal">
+      <div class="section-label">§ 02 — Design System</div>
+      <div class="token-block">
+        <span class="cm">/* science-archival-portfolio · design tokens */</span><br>
+        <span class="ky">--vellum</span><span class="pt">:   </span><span class="vl">#f0e9d6</span><span class="pt">; </span><span class="cm">/* aged paper stock */</span><br>
+        <span class="ky">--ink</span><span class="pt">:      </span><span class="vl">#181510</span><span class="pt">; </span><span class="cm">/* prussian black */</span><br>
+        <span class="ky">--cobalt</span><span class="pt">:   </span><span class="vl">#1d3a8a</span><span class="pt">; </span><span class="cm">/* annotation blue */</span><br>
+        <span class="ky">--f-serif</span><span class="pt">:  </span><span class="vl">'Libre Baskerville'</span><span class="pt">; </span><span class="cm">/* headers, titles */</span><br>
+        <span class="ky">--f-mono</span><span class="pt">:   </span><span class="vl">'Courier Prime'</span><span class="pt">;    </span><span class="cm">/* body, metadata */</span><br>
+        <span class="ky">--f-code</span><span class="pt">:   </span><span class="vl">'Source Code Pro'</span><span class="pt">;  </span><span class="cm">/* labels, tags */</span><br>
+        <span class="ky">--f-hand</span><span class="pt">:   </span><span class="vl">'Caveat'</span><span class="pt">;           </span><span class="cm">/* voice, salutation */</span><br>
+        <span class="cm">/* constraint is method. method is the design. */</span>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-label">§ 03 — Recommended Stack</div>
+      <div class="stack-row">
+        <span class="stk">Next.js 14</span>
+        <span class="stk">MDX</span>
+        <span class="stk">Vercel</span>
+        <span class="stk">CSS Modules</span>
+        <span class="stk o">IntersectionObserver</span>
+        <span class="stk o">CSS @print</span>
+        <span class="stk o">SVG paths</span>
+        <span class="stk o">Lighthouse 98+</span>
+      </div>
+      <p class="body-text" style="margin-top:0.5rem;">
+        Built for longevity. The entire site exports as static HTML — 
+        it will outlast any framework trend. <mark>Zero vendor lock-in.</mark> 
+        Readable by search engines, screen readers, and future archivists alike.
+      </p>
+    </div>
+
+    <!-- STAMP -->
+    <div class="stamp">
+      <div class="stamp-inner">RESEARCH<br>PORTFOLIO<br>OULIPO<br>METHOD</div>
+    </div>
+
+    <!-- DECISION TREE -->
+    <div class="dt-section reveal">
+      <div class="dt-wrap">
+        <span class="dt-root">Your Portfolio</span>
+        <div class="dt-branches">
+          <div class="dt-b"><mark>will launch</mark> — makes your research findable</div>
+          <div class="dt-b"><mark>will document</mark> — makes your work permanent</div>
+          <div class="dt-b"><mark>will distinguish</mark> — makes your identity precise</div>
+          <div class="dt-b dead">ne viendra pas — is not an option</div>
+        </div>
+      </div>
+      <div class="dt-foot">à la réunion du portfolio · III · 2026</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE: RESEARCH & PUBLICATIONS
+  ══════════════════════════════ -->
+  <section class="page" id="page-research">
+    <span class="page-num">0 0 2</span>
+
+    <header class="letterhead">
+      <div class="lh-left">
+        <div class="brand">Research Archive</div>
+        <div class="brand-rule"></div>
+        <div class="brand-sub">Publications · Preprints · Proceedings</div>
+      </div>
+      <div class="lh-right">
+        <strong>Sample Entries</strong>
+        Placeholder data<br>
+        Replace with yours
+      </div>
+    </header>
+
+    <div class="section-label">§ Filter by type</div>
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="journal">Journal</button>
+      <button class="filter-btn" data-filter="conference">Conference</button>
+      <button class="filter-btn" data-filter="preprint">Preprint</button>
+    </div>
+
+    <div class="pub-list">
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2025</div>
+        <div class="pub-content">
+          <div class="pub-title">Constrained Optimisation in Distributed Sensor Networks: An Archival Methodology</div>
+          <div class="pub-meta">
+            <em>Journal of Applied Systems Research</em> · Vol. 42, No. 3, pp. 118–134<br>
+            DOI: 10.xxxx/jasr.2025.00042 · Received: Jan 2025 · Accepted: Mar 2025
+          </div>
+          <div class="pub-abstract">We propose a novel constraint-satisfaction framework for distributed sensor arrays operating under bandwidth-limited conditions, demonstrating a 34% improvement in synchronisation fidelity across heterogeneous node configurations...</div>
+          <div class="pub-tags">
+            <span class="pub-tag">Journal</span>
+            <span class="pub-tag green">Peer-Reviewed</span>
+            <span class="pub-tag">Sensor Networks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="conference">
+        <div class="pub-year">2024</div>
+        <div class="pub-content">
+          <div class="pub-title">Towards Reproducible Computational Pipelines for Large-Scale Environmental Data</div>
+          <div class="pub-meta">
+            <em>Proceedings of the International Symposium on Data Infrastructure</em> · Berlin, 2024<br>
+            DOI: 10.xxxx/isdi.2024.0088 · Best Paper Nominee
+          </div>
+          <div class="pub-abstract">A reproducibility framework for environmental data pipelines combining containerised workflows, semantic versioning, and archival-grade provenance tracking...</div>
+          <div class="pub-tags">
+            <span class="pub-tag">Conference</span>
+            <span class="pub-tag green">Peer-Reviewed</span>
+            <span class="pub-tag">Data Science</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="preprint">
+        <div class="pub-year">2026</div>
+        <div class="pub-content">
+          <div class="pub-title">Archival Fidelity in Machine-Readable Research Records: A Proposed Standard</div>
+          <div class="pub-meta">
+            arXiv:2026.xxxxx · Submitted February 2026 · Under Review
+          </div>
+          <div class="pub-abstract">We argue for a unified metadata standard for research outputs combining the rigour of library archival science with the accessibility requirements of modern computational research environments...</div>
+          <div class="pub-tags">
+            <span class="pub-tag red">Preprint</span>
+            <span class="pub-tag">Under Review</span>
+            <span class="pub-tag">Methodology</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE: PROJECTS
+  ══════════════════════════════ -->
+  <section class="page" id="page-projects">
+    <span class="page-num">0 0 3</span>
+
+    <header class="letterhead">
+      <div class="lh-left">
+        <div class="brand">Projects</div>
+        <div class="brand-rule"></div>
+        <div class="brand-sub">Applied Research · Case Studies · Tools</div>
+      </div>
+      <div class="lh-right">
+        <strong>Sample Projects</strong>
+        Replace with yours
+      </div>
+    </header>
+
+    <p class="body-text">
+      Applied research outputs, open-source tools, and case studies. 
+      Each project is a <mark>documented artefact</mark> — method, stack, outcome, and status recorded with archival precision.
+    </p>
+
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <span class="proj-status active">Active</span>
+        <div class="proj-num">— P.01 —</div>
+        <div class="proj-title">SensorGrid Analytics Dashboard</div>
+        <div class="proj-body">Real-time visualisation platform for distributed IoT sensor arrays. Processes 50k+ events/sec with sub-100ms latency. Used by 3 research institutes.</div>
+        <div class="proj-stack">
+          <span class="proj-tech">Python</span>
+          <span class="proj-tech">InfluxDB</span>
+          <span class="proj-tech">React</span>
+          <span class="proj-tech">WebSocket</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-status ongoing">Ongoing</span>
+        <div class="proj-num">— P.02 —</div>
+        <div class="proj-title">ReproduciblePipe Framework</div>
+        <div class="proj-body">Open-source toolkit for reproducible computational research pipelines. Semantic versioning + provenance tracking + one-command replication.</div>
+        <div class="proj-stack">
+          <span class="proj-tech">Docker</span>
+          <span class="proj-tech">Snakemake</span>
+          <span class="proj-tech">Git</span>
+          <span class="proj-tech">YAML</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-status archived">Archived</span>
+        <div class="proj-num">— P.03 —</div>
+        <div class="proj-title">Climate Data Archive v2</div>
+        <div class="proj-body">Long-term archival system for 40 years of regional climate measurements. Migrated 2.3TB of legacy formats to standardised NetCDF with full metadata.</div>
+        <div class="proj-stack">
+          <span class="proj-tech">NetCDF</span>
+          <span class="proj-tech">Python</span>
+          <span class="proj-tech">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-status ongoing">Ongoing</span>
+        <div class="proj-num">— P.04 —</div>
+        <div class="proj-title">Research Identity System</div>
+        <div class="proj-body">This portfolio — a brutalist-archival web presence for science researchers. OULIPO-inspired constraint-driven design applied to professional identity.</div>
+        <div class="proj-stack">
+          <span class="proj-tech">Next.js</span>
+          <span class="proj-tech">MDX</span>
+          <span class="proj-tech">CSS</span>
+          <span class="proj-tech">Vercel</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE: CV / ABOUT
+  ══════════════════════════════ -->
+  <section class="page" id="page-cv">
+    <span class="page-num">0 0 4</span>
+
+    <header class="letterhead">
+      <div class="lh-left">
+        <div class="brand">Curriculum Vitæ</div>
+        <div class="brand-rule"></div>
+        <div class="brand-sub">Science &amp; Technology Researcher</div>
+      </div>
+      <div class="lh-right">
+        <strong>Living Document</strong>
+        Updated March 2026<br>
+        Zürich, CH
+      </div>
+    </header>
+
+    <div class="cv-header">
+      <div>
+        <div class="cv-name">Your Name</div>
+        <div class="cv-title-line">Researcher · Engineer · [Your Discipline]</div>
+        <p class="cv-bio">
+          Researcher working at the intersection of [your fields]. 
+          Committed to rigorous, reproducible, and openly documented science. 
+          Based in Zürich. Affiliated with [your institution].
+        </p>
+      </div>
+      <div class="cv-contact-block">
+        <a href="#">your@email.ch</a><br>
+        <a href="#">github.com/you</a><br>
+        <a href="#">orcid.org/xxxx</a><br>
+        <a href="#">scholar.google.com</a>
+      </div>
+    </div>
+
+    <hr class="dashed-rule">
+
+    <div class="cv-section">
+      <div class="section-label">§ Education</div>
+      <div class="cv-entry">
+        <div class="cv-date">2020–2024</div>
+        <div>
+          <div class="cv-entry-title">Ph.D. in [Your Discipline]</div>
+          <div class="cv-entry-inst">ETH Zürich / University of Zürich</div>
+          <div class="cv-entry-desc">Thesis: "Title of Your Doctoral Research." Supervised by Prof. X. Funded by [grant/fellowship].</div>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2017–2020</div>
+        <div>
+          <div class="cv-entry-title">M.Sc. in [Your Field]</div>
+          <div class="cv-entry-inst">Your University</div>
+          <div class="cv-entry-desc">Graduated with distinction. Master's thesis on [topic]. GPA: x.x/6.0.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="section-label">§ Experience</div>
+      <div class="cv-entry">
+        <div class="cv-date">2024–present</div>
+        <div>
+          <div class="cv-entry-title">Postdoctoral Researcher</div>
+          <div class="cv-entry-inst">Your Institute, Zürich</div>
+          <div class="cv-entry-desc">Leading research on [topic]. PI on [grant]. Supervising 2 doctoral students.</div>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2022–2023</div>
+        <div>
+          <div class="cv-entry-title">Research Intern</div>
+          <div class="cv-entry-inst">Research Lab / Industry Partner</div>
+          <div class="cv-entry-desc">Applied [method] to [problem]. Published 1 joint paper. Developed open-source tooling.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="section-label">§ Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-item">Python · R<br>Julia · MATLAB<br>SQL · Bash</div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Frameworks</div>
+          <div class="skill-item">PyTorch · NumPy<br>Pandas · Snakemake<br>Docker · Git</div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Domains</div>
+          <div class="skill-item">Data Engineering<br>Scientific Computing<br>Systems Design</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PAGE: CONTACT / COLOPHON
+  ══════════════════════════════ -->
+  <section class="page" id="page-contact">
+    <span class="page-num">0 0 5</span>
+
+    <header class="letterhead">
+      <div class="lh-left">
+        <div class="brand">Contact</div>
+        <div class="brand-rule"></div>
+        <div class="brand-sub">Reply Slip · Colophon · Method</div>
+      </div>
+      <div class="lh-right">
+        <strong>Open to</strong>
+        Collaborations<br>
+        Speaking · Consulting
+      </div>
+    </header>
+
+    <div class="contact-grid">
+
+      <div class="reply-slip">
+        <div class="reply-slip-title">Send a message</div>
+        <div class="form-field">
+          <label>Name</label>
+          <input type="text" placeholder="Your name"/>
+        </div>
+        <div class="form-field">
+          <label>Institution / Affiliation</label>
+          <input type="text" placeholder="Where you're writing from"/>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="Your inquiry, collaboration idea, or question…"></textarea>
+        </div>
+        <button class="submit-btn">Send Reply →</button>
+      </div>
+
+      <div class="colophon-block">
+        <strong>Colophon</strong>
+        This portfolio is typeset in Libre Baskerville (display), Courier Prime (body), Source Code Pro (labels), and Caveat (voice). Designed in the browser. No Figma mockups — constraint-first, in the OULIPO tradition.
+
+        <strong>Built with</strong>
+        Next.js 14 · MDX · CSS Modules<br>
+        Deployed on Vercel · Static export<br>
+        Lighthouse score: 98+ across all metrics.
+
+        <strong>Philosophy</strong>
+        <em>"The constraint is not a limitation — it is the structure that makes the work legible."</em> Every design decision in this portfolio follows a single rule: archival clarity over decorative noise.
+
+        <strong>Connect</strong>
+        <div class="social-row">
+          <a class="social-link" href="#">ORCID</a>
+          <a class="social-link" href="#">GitHub</a>
+          <a class="social-link" href="#">Scholar</a>
+          <a class="social-link" href="#">LinkedIn</a>
+          <a class="social-link" href="#">ResearchGate</a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="dashed-rule">
+    <p class="body-text" style="text-align:center; font-style:italic; opacity:0.55; font-size:0.78rem;">
+      Au moment du lancement — bien oulipiennement — <span class="salutation" style="font-size:1.2rem;">votre portfolio.</span>
+    </p>
+  </section>
+
+</div><!-- /.doc -->
+
+<script>
+// ── TAB NAVIGATION ──
+const tabs = document.querySelectorAll('.nav-tab');
+const pages = document.querySelectorAll('.page');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    pages.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.page).classList.add('active');
+    triggerReveals();
+  });
+});
+
+// ── FILTER (publications) ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.pub-item').forEach(item => {
+      item.style.display = (f === 'all' || item.dataset.type === f) ? 'grid' : 'none';
+    });
+  });
+});
+
+// ── SCROLL REVEALS ──
+function triggerReveals() {
+  const reveals = document.querySelectorAll('.page.active .reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('v'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => io.observe(el));
+  // immediate for above-fold
+  setTimeout(() => {
+    reveals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight) el.classList.add('v');
+    });
+  }, 80);
+}
+
+triggerReveals();
+</script>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Research Portfolio — Science & Technology. Archival method. Brutalist-scholarly web presence."/>
+<title>Research Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/main.css"/>
+</head>
+<body>
+
+  <!-- ══ SIDEBAR NAV ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-word">Portfolio</span>
+      <div class="brand-rule"></div>
+      <span class="brand-sub">Science &amp; Technology</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-page="home">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-page="research">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Research</span>
+      </button>
+      <button class="nav-item" data-page="projects">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Projects</span>
+      </button>
+      <button class="nav-item" data-page="cv">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">CV / About</span>
+      </button>
+      <button class="nav-item" data-page="contact">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Contact</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="sidebar-stamp">
+        OULIPO<br>METHOD<br>2026
+      </span>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="main">
+
+    <!-- ════════════════════
+         HOME / COVER LETTER
+    ════════════════════ -->
+    <section class="page active" id="page-home">
+      <div class="page-inner">
+        <span class="page-num">0 0 1</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Portfolio</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Archival &amp; Scholarly · Science / Technology</div>
+          </div>
+          <div class="lh-right">
+            <strong>Cover Letter</strong>
+            Zürich, March 2026<br>
+            yourname.com
+          </div>
+        </header>
+
+        <div class="salut-row">
+          <span class="hand">À qui de droit,</span>
+        </div>
+
+        <p class="body-text">
+          Chers collègues, collaborateurs, et curieux — welcome to a 
+          professional presence built at <mark>the intersection of scientific 
+          rigour and archival craft</mark>. Not a brochure. A living record: 
+          of research conducted, methods refined, and knowledge contributed.
+        </p>
+
+        <p class="body-text">
+          Every entry here is documented with the same care applied in the 
+          laboratory. Every project is a case study. Every publication, 
+          a permanent artefact. <span class="hl-subtle">Pensez-y.</span>
+        </p>
+
+        <hr class="dashed-rule"/>
+
+        <div class="section-label">§ What you will find here</div>
+
+        <div class="home-grid">
+          <div class="home-card" onclick="navigate('research')">
+            <div class="hc-num">— 01 —</div>
+            <div class="hc-title">Research &amp; Publications</div>
+            <div class="hc-body">A filterable archive of journal articles, conference papers, and preprints. Each entry complete with abstract, DOI, and peer-review status.</div>
+            <div class="hc-arrow">→ View Archive</div>
+          </div>
+          <div class="home-card" onclick="navigate('projects')">
+            <div class="hc-num">— 02 —</div>
+            <div class="hc-title">Projects &amp; Case Studies</div>
+            <div class="hc-body">Applied research, open-source tools, and technical case studies. Method, stack, outcome, and status recorded with archival precision.</div>
+            <div class="hc-arrow">→ View Projects</div>
+          </div>
+          <div class="home-card" onclick="navigate('cv')">
+            <div class="hc-num">— 03 —</div>
+            <div class="hc-title">Curriculum Vitæ</div>
+            <div class="hc-body">A living CV — education, experience, skills. Typeset as a document. Exportable to PDF. Your scientific identity in one page.</div>
+            <div class="hc-arrow">→ View CV</div>
+          </div>
+          <div class="home-card" onclick="navigate('contact')">
+            <div class="hc-num">— 04 —</div>
+            <div class="hc-title">Contact &amp; Colophon</div>
+            <div class="hc-body">An OULIPO-style reply slip for collaborations and inquiries. Plus a colophon naming every tool and typeface used — scholarly transparency.</div>
+            <div class="hc-arrow">→ Get in Touch</div>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <!-- DECISION TREE -->
+        <div class="dt-section">
+          <div class="dt-wrap">
+            <span class="hand dt-root">Your Research</span>
+            <div class="dt-branches">
+              <div class="dt-b"><mark>is documented</mark> — permanently, precisely</div>
+              <div class="dt-b"><mark>is findable</mark> — by peers, collaborators, the curious</div>
+              <div class="dt-b"><mark>is yours</mark> — authored, timestamped, attributed</div>
+              <div class="dt-b dead">ne viendra pas — is not an option</div>
+            </div>
+          </div>
+          <div class="dt-foot">à la réunion du portfolio · III · 2026</div>
+        </div>
+
+        <!-- SIGN BLOCK -->
+        <div class="sign-block">
+          <div class="sign-left">
+            Au moment du lancement,<br>
+            bien <span class="hl-subtle">oulipiennement</span> —
+          </div>
+          <div class="sign-right">
+            <div class="hand sign-name">votre portfolio</div>
+            <div class="sign-title">Un secrétaire du web.</div>
+          </div>
+        </div>
+
+        <!-- STAMP -->
+        <div class="stamp" aria-hidden="true">
+          <div class="stamp-inner">RESEARCH<br>PORTFOLIO<br>OULIPO<br>METHOD</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         RESEARCH
+    ════════════════════ -->
+    <section class="page" id="page-research">
+      <div class="page-inner">
+        <span class="page-num">0 0 2</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Research Archive</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Publications · Preprints · Proceedings</div>
+          </div>
+          <div class="lh-right">
+            <strong>Archival Record</strong>
+            Updated March 2026
+          </div>
+        </header>
+
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="journal">Journal</button>
+          <button class="filter-btn" data-filter="conference">Conference</button>
+          <button class="filter-btn" data-filter="preprint">Preprint</button>
+        </div>
+
+        <div class="pub-list" id="pub-list">
+
+          <article class="pub-item" data-type="journal">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">Constrained Optimisation in Distributed Sensor Networks: An Archival Methodology</h2>
+              <div class="pub-meta">
+                <em>Journal of Applied Systems Research</em> · Vol. 42, No. 3, pp. 118–134<br>
+                DOI: 10.xxxx/jasr.2025.00042 · Received Jan 2025 · Accepted Mar 2025
+              </div>
+              <p class="pub-abstract">We propose a novel constraint-satisfaction framework for distributed sensor arrays operating under bandwidth-limited conditions, demonstrating a 34% improvement in synchronisation fidelity across heterogeneous node configurations…</p>
+              <div class="pub-tags">
+                <span class="tag">Journal</span>
+                <span class="tag green">Peer-Reviewed</span>
+                <span class="tag">Sensor Networks</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="conference">
+            <div class="pub-year">2024</div>
+            <div class="pub-content">
+              <h2 class="pub-title">Towards Reproducible Computational Pipelines for Large-Scale Environmental Data</h2>
+              <div class="pub-meta">
+                <em>Proceedings of the International Symposium on Data Infrastructure</em> · Berlin, 2024<br>
+                DOI: 10.xxxx/isdi.2024.0088 · Best Paper Nominee
+              </div>
+              <p class="pub-abstract">A reproducibility framework for environmental data pipelines combining containerised workflows, semantic versioning, and archival-grade provenance tracking…</p>
+              <div class="pub-tags">
+                <span class="tag">Conference</span>
+                <span class="tag green">Peer-Reviewed</span>
+                <span class="tag">Data Science</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="preprint">
+            <div class="pub-year">2026</div>
+            <div class="pub-content">
+              <h2 class="pub-title">Archival Fidelity in Machine-Readable Research Records: A Proposed Standard</h2>
+              <div class="pub-meta">
+                arXiv:2026.xxxxx · Submitted February 2026 · Under Review
+              </div>
+              <p class="pub-abstract">We argue for a unified metadata standard for research outputs combining the rigour of library archival science with the accessibility requirements of modern computational research environments…</p>
+              <div class="pub-tags">
+                <span class="tag red">Preprint</span>
+                <span class="tag">Under Review</span>
+                <span class="tag">Methodology</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         PROJECTS
+    ════════════════════ -->
+    <section class="page" id="page-projects">
+      <div class="page-inner">
+        <span class="page-num">0 0 3</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Projects</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Applied Research · Tools · Case Studies</div>
+          </div>
+          <div class="lh-right">
+            <strong>Case Studies</strong>
+            Method · Stack · Outcome
+          </div>
+        </header>
+
+        <p class="body-text">
+          Applied research outputs and open-source tools. Each project is a 
+          <mark>documented artefact</mark> — method, stack, outcome, and status 
+          recorded with archival precision.
+        </p>
+
+        <div class="proj-grid">
+
+          <article class="proj-card">
+            <span class="proj-status active">Active</span>
+            <div class="proj-num">— P.01 —</div>
+            <h2 class="proj-title">SensorGrid Analytics Dashboard</h2>
+            <p class="proj-body">Real-time visualisation platform for distributed IoT sensor arrays. Processes 50k+ events/sec with sub-100ms latency. Deployed across 3 research institutes.</p>
+            <div class="proj-stack">
+              <span class="tech">Python</span>
+              <span class="tech">InfluxDB</span>
+              <span class="tech">React</span>
+              <span class="tech">WebSocket</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">— P.02 —</div>
+            <h2 class="proj-title">ReproduciblePipe Framework</h2>
+            <p class="proj-body">Open-source toolkit for reproducible computational research pipelines. Semantic versioning + provenance tracking + one-command replication.</p>
+            <div class="proj-stack">
+              <span class="tech">Docker</span>
+              <span class="tech">Snakemake</span>
+              <span class="tech">Git</span>
+              <span class="tech">YAML</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">— P.03 —</div>
+            <h2 class="proj-title">Climate Data Archive v2</h2>
+            <p class="proj-body">Long-term archival system for 40 years of regional climate measurements. Migrated 2.3TB of legacy formats to standardised NetCDF with full metadata provenance.</p>
+            <div class="proj-stack">
+              <span class="tech">NetCDF</span>
+              <span class="tech">Python</span>
+              <span class="tech">PostgreSQL</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">— P.04 —</div>
+            <h2 class="proj-title">Research Identity System</h2>
+            <p class="proj-body">This portfolio — a brutalist-archival web presence for science researchers. OULIPO constraint-driven design applied to professional identity.</p>
+            <div class="proj-stack">
+              <span class="tech">Next.js</span>
+              <span class="tech">MDX</span>
+              <span class="tech">CSS</span>
+              <span class="tech">Vercel</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CV
+    ════════════════════ -->
+    <section class="page" id="page-cv">
+      <div class="page-inner">
+        <span class="page-num">0 0 4</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Curriculum Vitæ</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Living Document · Updated March 2026</div>
+          </div>
+          <div class="lh-right">
+            <strong>Science &amp; Technology</strong>
+            Zürich, CH
+          </div>
+        </header>
+
+        <div class="cv-header">
+          <div>
+            <h1 class="cv-name">Your Name</h1>
+            <div class="cv-role">Researcher · Engineer · [Your Discipline]</div>
+            <p class="cv-bio">Researcher working at the intersection of [your fields]. Committed to rigorous, reproducible, and openly documented science. Based in Zürich. Affiliated with [your institution].</p>
+          </div>
+          <div class="cv-contacts">
+            <a href="#">your@email.ch</a>
+            <a href="#">github.com/you</a>
+            <a href="#">orcid.org/xxxx</a>
+            <a href="#">scholar.google.com</a>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <div class="cv-section">
+          <div class="section-label">§ Education</div>
+          <div class="cv-entry">
+            <div class="cv-date">2020–2024</div>
+            <div>
+              <div class="cv-entry-title">Ph.D. in [Your Discipline]</div>
+              <div class="cv-entry-inst">ETH Zürich / University of Zürich</div>
+              <div class="cv-entry-desc">Thesis: "Title of Your Doctoral Research." Supervised by Prof. X. Funded by [grant/fellowship].</div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-date">2017–2020</div>
+            <div>
+              <div class="cv-entry-title">M.Sc. in [Your Field]</div>
+              <div class="cv-entry-inst">Your University</div>
+              <div class="cv-entry-desc">Graduated with distinction. Master's thesis on [topic]. GPA: x.x/6.0.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Experience</div>
+          <div class="cv-entry">
+            <div class="cv-date">2024–present</div>
+            <div>
+              <div class="cv-entry-title">Postdoctoral Researcher</div>
+              <div class="cv-entry-inst">Your Institute, Zürich</div>
+              <div class="cv-entry-desc">Leading research on [topic]. PI on [grant]. Supervising 2 doctoral students.</div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-date">2022–2023</div>
+            <div>
+              <div class="cv-entry-title">Research Intern</div>
+              <div class="cv-entry-inst">Research Lab / Industry Partner</div>
+              <div class="cv-entry-desc">Applied [method] to [problem]. Published 1 joint paper. Developed open-source tooling.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Technical Skills</div>
+          <div class="skills-grid">
+            <div class="skill-group">
+              <div class="skill-group-title">Languages</div>
+              <div class="skill-items">Python · R · Julia<br>MATLAB · SQL · Bash</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Frameworks</div>
+              <div class="skill-items">PyTorch · NumPy<br>Pandas · Snakemake<br>Docker · Git</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Domains</div>
+              <div class="skill-items">Data Engineering<br>Scientific Computing<br>Systems Design</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-print-btn-row">
+          <button class="print-btn" onclick="window.print()">↓ Export as PDF</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CONTACT
+    ════════════════════ -->
+    <section class="page" id="page-contact">
+      <div class="page-inner">
+        <span class="page-num">0 0 5</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Contact</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Reply Slip · Colophon · Method</div>
+          </div>
+          <div class="lh-right">
+            <strong>Open to</strong>
+            Collaborations · Speaking<br>
+            Consulting · Peer Review
+          </div>
+        </header>
+
+        <div class="contact-grid">
+
+          <div class="reply-slip">
+            <h2 class="reply-title">Send a message</h2>
+            <div class="form-field">
+              <label>Name</label>
+              <input type="text" placeholder="Your name"/>
+            </div>
+            <div class="form-field">
+              <label>Institution / Affiliation</label>
+              <input type="text" placeholder="Where you're writing from"/>
+            </div>
+            <div class="form-field">
+              <label>Subject</label>
+              <input type="text" placeholder="Collaboration / Inquiry / Other"/>
+            </div>
+            <div class="form-field">
+              <label>Message</label>
+              <textarea placeholder="Your inquiry, collaboration idea, or question…"></textarea>
+            </div>
+            <button class="submit-btn">Send Reply →</button>
+          </div>
+
+          <div class="colophon">
+            <div class="colophon-section">
+              <div class="section-label">§ Colophon</div>
+              <p class="body-text" style="font-size:0.78rem;">
+                Typeset in <em>Libre Baskerville</em> (display), 
+                <em>Courier Prime</em> (body), <em>Source Code Pro</em> (labels), 
+                and <em>Homemade Apple</em> (voice). Designed constraint-first — 
+                in the OULIPO tradition. No mockups. Built in the browser.
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Built with</div>
+              <p class="body-text" style="font-size:0.78rem;">
+                HTML · CSS · Vanilla JS (prototype)<br>
+                Next.js 14 · MDX · Vercel (production)<br>
+                Lighthouse score: 98+ across all metrics.
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Connect</div>
+              <div class="social-row">
+                <a class="social-link" href="#">ORCID</a>
+                <a class="social-link" href="#">GitHub</a>
+                <a class="social-link" href="#">Scholar</a>
+                <a class="social-link" href="#">LinkedIn</a>
+                <a class="social-link" href="#">ResearchGate</a>
+              </div>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Philosophy</div>
+              <p class="body-text" style="font-size:0.75rem; font-style:italic;">
+                "The constraint is not a limitation — it is the structure 
+                that makes the work legible." Every design decision follows 
+                a single rule: archival clarity over decorative noise.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="dashed-rule"/>
+        <p style="text-align:center; font-family:'Courier Prime',monospace; font-size:0.75rem; opacity:0.45; font-style:italic;">
+          Au moment du lancement — bien oulipiennement —
+          <span class="hand" style="font-size:1.2rem; vertical-align:middle; margin-left:0.5rem;">votre portfolio.</span>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="src/components/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Research Portfolio — Science & Technology. Archival method. Brutalist-scholarly web presence."/>
+<title>Research Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   OULIPO PORTFOLIO — main.css
+   Science & Technology · Archival & Scholarly
+   Full-width · Homemade Apple · Sprint 1
+═══════════════════════════════════════════════════ */
+
+/* ── TOKENS ── */
+:root {
+  --vellum:        #f0e9d6;
+  --vellum-dark:   #e5dbc4;
+  --vellum-mid:    #d8ccb0;
+  --ink:           #181510;
+  --ink-2:         #2e2a20;
+  --ink-3:         #4a4535;
+  --cobalt:        #1d3a8a;
+  --cobalt-hi:     rgba(29, 58, 138, 0.68);
+  --cobalt-tint:   rgba(29, 58, 138, 0.09);
+  --red:           #8b1a1a;
+  --green:         #1a5c3a;
+  --sidebar-w:     220px;
+  --page-pad:      3.5rem 4rem;
+  --page-pad-mob:  2rem 1.5rem;
+
+  --f-serif:  'Libre Baskerville', Georgia, serif;
+  --f-mono:   'Courier Prime', 'Courier New', monospace;
+  --f-code:   'Source Code Pro', monospace;
+  --f-hand:   'Homemade Apple', cursive;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+button { border: none; background: none; cursor: pointer; }
+a { color: inherit; }
+input, textarea { font-family: inherit; }
+
+/* ── BODY ── */
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #0e0c09;
+  color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 50% 60% at 15% 50%,
+      rgba(29,58,138,0.06) 0%, transparent 65%);
+}
+
+/* ══════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════ */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: #13110d;
+  border-right: 1px solid rgba(240,233,214,0.07);
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-brand {
+  padding: 0 1.8rem 2rem;
+  border-bottom: 1px solid rgba(240,233,214,0.07);
+  margin-bottom: 1.5rem;
+}
+
+.brand-word {
+  font-family: var(--f-code);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--vellum);
+  opacity: 0.9;
+}
+
+.brand-rule {
+  width: 28px; height: 2px;
+  background: var(--cobalt);
+  margin: 6px 0;
+}
+
+.brand-sub {
+  font-family: var(--f-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: rgba(240,233,214,0.3);
+  line-height: 1.5;
+}
+
+/* ── NAV ITEMS ── */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0;
+  font-family: var(--f-code);
+  font-size: 0.63rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,233,214,0.4);
+  transition: color 0.15s, background 0.15s;
+  text-align: left;
+  width: 100%;
+  border-left: 2px solid transparent;
+}
+
+.nav-item:hover {
+  color: rgba(240,233,214,0.8);
+  background: rgba(240,233,214,0.04);
+}
+
+.nav-item.active {
+  color: var(--vellum);
+  border-left-color: var(--cobalt);
+  background: rgba(29,58,138,0.1);
+}
+
+.nav-glyph {
+  color: var(--cobalt);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.nav-item.active .nav-glyph { opacity: 1; }
+
+/* ── SIDEBAR STAMP ── */
+.sidebar-foot {
+  padding: 1.5rem 1.8rem 0;
+  border-top: 1px solid rgba(240,233,214,0.05);
+  margin-top: 1rem;
+}
+
+.sidebar-stamp {
+  display: block;
+  font-family: var(--f-code);
+  font-size: 0.45rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(29,58,138,0.35);
+  line-height: 2;
+  border: 1px solid rgba(29,58,138,0.2);
+  padding: 0.5rem 0.75rem;
+  width: fit-content;
+  transform: rotate(-2deg);
+}
+
+/* ══════════════════════════════════════════
+   MAIN CONTENT AREA
+══════════════════════════════════════════ */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+  background: var(--vellum);
+  position: relative;
+}
+
+/* paper grain overlay */
+.main::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* ── PAGE SECTIONS ── */
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  animation: pageIn 0.4s ease both;
+}
+
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-inner {
+  padding: var(--page-pad);
+  max-width: 1200px;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════
+   SHARED COMPONENTS
+══════════════════════════════════════════ */
+
+/* ── PAGE NUMBER ── */
+.page-num {
+  position: absolute;
+  top: 1.5rem; right: 2.5rem;
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-3);
+  opacity: 0.35;
+}
+
+/* ── LETTERHEAD ── */
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  border-bottom: 2.5px solid var(--ink);
+  margin-bottom: 3rem;
+}
+
+.lh-brand {
+  font-family: var(--f-code);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.lh-rule {
+  width: 32px; height: 2.5px;
+  background: var(--ink);
+  margin: 5px 0;
+}
+
+.lh-sub {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  opacity: 0.6;
+}
+
+.lh-right {
+  text-align: right;
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+
+.lh-right strong {
+  display: block;
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+/* ── HANDWRITING ── */
+.hand {
+  font-family: var(--f-hand);
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cobalt);
+  opacity: 0.22;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-family: var(--f-mono);
+  font-size: 0.9rem;
+  line-height: 2;
+  color: var(--ink-2);
+  margin-bottom: 1.4rem;
+  max-width: 720px;
+}
+
+/* ── HIGHLIGHT ── */
+mark {
+  background: var(--cobalt-hi);
+  color: #fff;
+  padding: 0.06em 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-radius: 1px;
+  font-style: normal;
+}
+
+.hl-subtle {
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+  padding: 0.04em 0.2em;
+  font-weight: 700;
+}
+
+/* ── DASHED RULE ── */
+.dashed-rule {
+  border: none;
+  border-top: 1px dashed var(--ink-3);
+  opacity: 0.25;
+  margin: 2.5rem 0;
+}
+
+/* ── TAGS ── */
+.tag {
+  display: inline-block;
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.12em 0.45em;
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+  border-radius: 0;
+}
+.tag.red  { background: rgba(139,26,26,0.08); color: var(--red); }
+.tag.green{ background: rgba(26,92,58,0.1);   color: var(--green); }
+
+/* ══════════════════════════════════════════
+   HOME PAGE
+══════════════════════════════════════════ */
+.salut-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.salut-row .hand {
+  font-size: 2.8rem;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.home-card {
+  border: 1px solid var(--ink);
+  padding: 1.2rem 1.3rem 1.4rem;
+  background: var(--vellum-dark);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cobalt);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.home-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.home-card:hover::before { transform: scaleX(1); }
+
+.hc-num {
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--cobalt);
+  margin-bottom: 0.5rem;
+}
+
+.hc-title {
+  font-family: var(--f-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+}
+
+.hc-body {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  line-height: 1.75;
+  color: var(--ink-3);
+  margin-bottom: 0.8rem;
+}
+
+.hc-arrow {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--cobalt);
+}
+
+/* ── DECISION TREE ── */
+.dt-section {
+  margin: 1rem 0 2.5rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px dashed rgba(0,0,0,0.18);
+}
+
+.dt-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.dt-root {
+  font-size: 1.6rem;
+  align-self: center;
+}
+
+.dt-branches {
+  border-left: 2px solid var(--ink);
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dt-b {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0;
+}
+
+.dt-b::before { content: '→'; color: var(--cobalt); font-weight: 700; }
+.dt-b.dead { opacity: 0.3; text-decoration: line-through; }
+
+.dt-foot {
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-3);
+  opacity: 0.4;
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+/* ── SIGN BLOCK ── */
+.sign-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.sign-left {
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--ink-3);
+}
+
+.sign-right { text-align: right; }
+
+.sign-name {
+  font-size: 2.4rem;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.sign-title {
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+
+/* ── STAMP ── */
+.stamp {
+  position: absolute;
+  bottom: 6rem; left: 50%;
+  transform: translateX(-50%) rotate(-7deg);
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--cobalt);
+  opacity: 0.15;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stamp-inner {
+  font-family: var(--f-code);
+  font-size: 0.42rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════
+   RESEARCH PAGE
+══════════════════════════════════════════ */
+.filter-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--ink-3);
+  color: var(--ink-3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--vellum);
+  border-color: var(--ink);
+}
+
+.pub-list { }
+
+.pub-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.pub-item:last-child { border-bottom: none; }
+
+.pub-year {
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--cobalt);
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.pub-title {
+  font-family: var(--f-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.pub-meta {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+}
+
+.pub-abstract {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.pub-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════════
+   PROJECTS PAGE
+══════════════════════════════════════════ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+
+.proj-card {
+  border: 1px solid var(--ink);
+  padding: 1.3rem 1.3rem 1.4rem;
+  background: var(--vellum-dark);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.proj-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--cobalt);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.2s ease;
+}
+
+.proj-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--cobalt);
+}
+
+.proj-card:hover::before { transform: scaleY(1); }
+
+.proj-status {
+  position: absolute;
+  top: 0.9rem; right: 0.9rem;
+  font-family: var(--f-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.15em 0.45em;
+  border: 1px solid;
+}
+
+.proj-status.active   { color: var(--green); border-color: var(--green); background: rgba(26,92,58,0.08); }
+.proj-status.ongoing  { color: var(--cobalt); border-color: var(--cobalt); background: rgba(29,58,138,0.08); }
+.proj-status.archived { color: var(--ink-3); border-color: var(--ink-3); background: rgba(0,0,0,0.04); }
+
+.proj-num {
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--cobalt);
+  margin-bottom: 0.4rem;
+}
+
+.proj-title {
+  font-family: var(--f-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+  padding-right: 3rem;
+}
+
+.proj-body {
+  font-family: var(--f-mono);
+  font-size: 0.73rem;
+  line-height: 1.75;
+  color: var(--ink-3);
+  margin-bottom: 0.8rem;
+}
+
+.proj-stack { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+.tech {
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  padding: 0.12em 0.4em;
+  border: 1px solid var(--ink-3);
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════
+   CV PAGE
+══════════════════════════════════════════ */
+.cv-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  align-items: start;
+}
+
+.cv-name {
+  font-family: var(--f-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.cv-role {
+  font-family: var(--f-mono);
+  font-size: 0.85rem;
+  color: var(--cobalt);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.8rem;
+}
+
+.cv-bio {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--ink-2);
+  max-width: 540px;
+}
+
+.cv-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: right;
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  line-height: 2;
+}
+
+.cv-contacts a {
+  color: var(--cobalt);
+  text-decoration: none;
+  transition: opacity 0.12s;
+}
+
+.cv-contacts a:hover { opacity: 0.6; }
+
+.cv-section { margin: 2rem 0; }
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.cv-entry:last-child { border-bottom: none; }
+
+.cv-date {
+  font-family: var(--f-code);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  color: var(--cobalt);
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.cv-entry-title {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.cv-entry-inst {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.cv-entry-desc {
+  font-family: var(--f-mono);
+  font-size: 0.73rem;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.skill-group-title {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(29,58,138,0.2);
+}
+
+.skill-items {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+  line-height: 1.9;
+  padding-left: 0.6rem;
+  border-left: 1px solid rgba(0,0,0,0.08);
+}
+
+.cv-print-btn-row {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(0,0,0,0.15);
+}
+
+.print-btn {
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5em 1.2em;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.print-btn:hover {
+  background: var(--ink);
+  color: var(--vellum);
+}
+
+/* ══════════════════════════════════════════
+   CONTACT PAGE
+══════════════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 1.5rem 0;
+}
+
+.reply-slip {
+  border: 1px solid var(--ink);
+  padding: 2rem;
+  background: var(--vellum-dark);
+  position: relative;
+}
+
+.reply-slip::before {
+  content: '— cut here and return —';
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--vellum-dark);
+  padding: 0 0.6rem;
+  font-family: var(--f-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.reply-title {
+  font-family: var(--f-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.form-field { margin-bottom: 1.1rem; }
+
+.form-field label {
+  display: block;
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 0.35rem;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  background: var(--vellum);
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  padding: 0.45em 0;
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus { border-bottom-color: var(--cobalt); }
+.form-field textarea { height: 90px; }
+
+.submit-btn {
+  width: 100%;
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.65em 1em;
+  background: var(--ink);
+  color: var(--vellum);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover { background: var(--cobalt); }
+
+.colophon { display: flex; flex-direction: column; gap: 0.25rem; }
+.colophon-section { margin-bottom: 1.25rem; }
+
+.social-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+
+.social-link {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25em 0.6em;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.12s;
+}
+
+.social-link:hover {
+  background: var(--cobalt);
+  border-color: var(--cobalt);
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.v { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(2) { transition-delay: 0.07s; }
+.reveal:nth-child(3) { transition-delay: 0.14s; }
+.reveal:nth-child(4) { transition-delay: 0.21s; }
+.reveal:nth-child(5) { transition-delay: 0.28s; }
+
+/* ══════════════════════════════════════════
+   PRINT STYLES
+══════════════════════════════════════════ */
+@media print {
+  .sidebar, .filter-row, .cv-print-btn-row { display: none !important; }
+  .main { margin-left: 0; }
+  body { background: white; }
+  .page-inner { padding: 1.5cm 2cm; }
+  .pub-item, .cv-entry { break-inside: avoid; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .home-grid     { grid-template-columns: 1fr 1fr; }
+  .proj-grid     { grid-template-columns: 1fr 1fr; }
+  .skills-grid   { grid-template-columns: 1fr 1fr; }
+  .contact-grid  { grid-template-columns: 1fr; }
+  .cv-header     { grid-template-columns: 1fr; }
+  .cv-contacts   { text-align: left; }
+}
+
+@media (max-width: 700px) {
+  :root { --sidebar-w: 0px; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    width: 220px;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .page-inner { padding: var(--page-pad-mob); }
+  .home-grid  { grid-template-columns: 1fr; }
+  .proj-grid  { grid-template-columns: 1fr; }
+  .letterhead { flex-direction: column; gap: 1rem; }
+  .lh-right   { text-align: left; }
+  .sign-block { flex-direction: column; gap: 1.5rem; }
+  .pub-item   { grid-template-columns: 1fr; gap: 0.4rem; }
+  .cv-entry   { grid-template-columns: 1fr; gap: 0.3rem; }
+  .salut-row .hand { font-size: 2rem; }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- ══ SIDEBAR NAV ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-word">Portfolio</span>
+      <div class="brand-rule"></div>
+      <span class="brand-sub">Science &amp; Technology</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-page="home">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-page="research">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Research</span>
+      </button>
+      <button class="nav-item" data-page="projects">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Projects</span>
+      </button>
+      <button class="nav-item" data-page="cv">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">CV / About</span>
+      </button>
+      <button class="nav-item" data-page="contact">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Contact</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="sidebar-stamp">
+        OULIPO<br>METHOD<br>2026
+      </span>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="main">
+
+    <!-- ════════════════════
+         HOME / COVER LETTER
+    ════════════════════ -->
+    <section class="page active" id="page-home">
+      <div class="page-inner">
+        <span class="page-num">0 0 1</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Portfolio</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Archival &amp; Scholarly · Science / Technology</div>
+          </div>
+          <div class="lh-right">
+            <strong>Cover Letter</strong>
+            Zürich, March 2026<br>
+            yourname.com
+          </div>
+        </header>
+
+        <div class="salut-row">
+          <span class="hand">À qui de droit,</span>
+        </div>
+
+        <p class="body-text">
+          Chers collègues, collaborateurs, et curieux — welcome to a 
+          professional presence built at <mark>the intersection of scientific 
+          rigour and archival craft</mark>. Not a brochure. A living record: 
+          of research conducted, methods refined, and knowledge contributed.
+        </p>
+
+        <p class="body-text">
+          Every entry here is documented with the same care applied in the 
+          laboratory. Every project is a case study. Every publication, 
+          a permanent artefact. <span class="hl-subtle">Pensez-y.</span>
+        </p>
+
+        <hr class="dashed-rule"/>
+
+        <div class="section-label">§ What you will find here</div>
+
+        <div class="home-grid">
+          <div class="home-card" onclick="navigate('research')">
+            <div class="hc-num">— 01 —</div>
+            <div class="hc-title">Research &amp; Publications</div>
+            <div class="hc-body">A filterable archive of journal articles, conference papers, and preprints. Each entry complete with abstract, DOI, and peer-review status.</div>
+            <div class="hc-arrow">→ View Archive</div>
+          </div>
+          <div class="home-card" onclick="navigate('projects')">
+            <div class="hc-num">— 02 —</div>
+            <div class="hc-title">Projects &amp; Case Studies</div>
+            <div class="hc-body">Applied research, open-source tools, and technical case studies. Method, stack, outcome, and status recorded with archival precision.</div>
+            <div class="hc-arrow">→ View Projects</div>
+          </div>
+          <div class="home-card" onclick="navigate('cv')">
+            <div class="hc-num">— 03 —</div>
+            <div class="hc-title">Curriculum Vitæ</div>
+            <div class="hc-body">A living CV — education, experience, skills. Typeset as a document. Exportable to PDF. Your scientific identity in one page.</div>
+            <div class="hc-arrow">→ View CV</div>
+          </div>
+          <div class="home-card" onclick="navigate('contact')">
+            <div class="hc-num">— 04 —</div>
+            <div class="hc-title">Contact &amp; Colophon</div>
+            <div class="hc-body">An OULIPO-style reply slip for collaborations and inquiries. Plus a colophon naming every tool and typeface used — scholarly transparency.</div>
+            <div class="hc-arrow">→ Get in Touch</div>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <!-- DECISION TREE -->
+        <div class="dt-section">
+          <div class="dt-wrap">
+            <span class="hand dt-root">Your Research</span>
+            <div class="dt-branches">
+              <div class="dt-b"><mark>is documented</mark> — permanently, precisely</div>
+              <div class="dt-b"><mark>is findable</mark> — by peers, collaborators, the curious</div>
+              <div class="dt-b"><mark>is yours</mark> — authored, timestamped, attributed</div>
+              <div class="dt-b dead">ne viendra pas — is not an option</div>
+            </div>
+          </div>
+          <div class="dt-foot">à la réunion du portfolio · III · 2026</div>
+        </div>
+
+        <!-- SIGN BLOCK -->
+        <div class="sign-block">
+          <div class="sign-left">
+            Au moment du lancement,<br>
+            bien <span class="hl-subtle">oulipiennement</span> —
+          </div>
+          <div class="sign-right">
+            <div class="hand sign-name">votre portfolio</div>
+            <div class="sign-title">Un secrétaire du web.</div>
+          </div>
+        </div>
+
+        <!-- STAMP -->
+        <div class="stamp" aria-hidden="true">
+          <div class="stamp-inner">RESEARCH<br>PORTFOLIO<br>OULIPO<br>METHOD</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         RESEARCH
+    ════════════════════ -->
+    <section class="page" id="page-research">
+      <div class="page-inner">
+        <span class="page-num">0 0 2</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Research Archive</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Publications · Preprints · Proceedings</div>
+          </div>
+          <div class="lh-right">
+            <strong>Archival Record</strong>
+            Updated March 2026
+          </div>
+        </header>
+
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="journal">Journal</button>
+          <button class="filter-btn" data-filter="conference">Conference</button>
+          <button class="filter-btn" data-filter="preprint">Preprint</button>
+        </div>
+
+        <div class="pub-list" id="pub-list">
+
+          <article class="pub-item" data-type="journal">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">Constrained Optimisation in Distributed Sensor Networks: An Archival Methodology</h2>
+              <div class="pub-meta">
+                <em>Journal of Applied Systems Research</em> · Vol. 42, No. 3, pp. 118–134<br>
+                DOI: 10.xxxx/jasr.2025.00042 · Received Jan 2025 · Accepted Mar 2025
+              </div>
+              <p class="pub-abstract">We propose a novel constraint-satisfaction framework for distributed sensor arrays operating under bandwidth-limited conditions, demonstrating a 34% improvement in synchronisation fidelity across heterogeneous node configurations…</p>
+              <div class="pub-tags">
+                <span class="tag">Journal</span>
+                <span class="tag green">Peer-Reviewed</span>
+                <span class="tag">Sensor Networks</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="conference">
+            <div class="pub-year">2024</div>
+            <div class="pub-content">
+              <h2 class="pub-title">Towards Reproducible Computational Pipelines for Large-Scale Environmental Data</h2>
+              <div class="pub-meta">
+                <em>Proceedings of the International Symposium on Data Infrastructure</em> · Berlin, 2024<br>
+                DOI: 10.xxxx/isdi.2024.0088 · Best Paper Nominee
+              </div>
+              <p class="pub-abstract">A reproducibility framework for environmental data pipelines combining containerised workflows, semantic versioning, and archival-grade provenance tracking…</p>
+              <div class="pub-tags">
+                <span class="tag">Conference</span>
+                <span class="tag green">Peer-Reviewed</span>
+                <span class="tag">Data Science</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="preprint">
+            <div class="pub-year">2026</div>
+            <div class="pub-content">
+              <h2 class="pub-title">Archival Fidelity in Machine-Readable Research Records: A Proposed Standard</h2>
+              <div class="pub-meta">
+                arXiv:2026.xxxxx · Submitted February 2026 · Under Review
+              </div>
+              <p class="pub-abstract">We argue for a unified metadata standard for research outputs combining the rigour of library archival science with the accessibility requirements of modern computational research environments…</p>
+              <div class="pub-tags">
+                <span class="tag red">Preprint</span>
+                <span class="tag">Under Review</span>
+                <span class="tag">Methodology</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         PROJECTS
+    ════════════════════ -->
+    <section class="page" id="page-projects">
+      <div class="page-inner">
+        <span class="page-num">0 0 3</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Projects</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Applied Research · Tools · Case Studies</div>
+          </div>
+          <div class="lh-right">
+            <strong>Case Studies</strong>
+            Method · Stack · Outcome
+          </div>
+        </header>
+
+        <p class="body-text">
+          Applied research outputs and open-source tools. Each project is a 
+          <mark>documented artefact</mark> — method, stack, outcome, and status 
+          recorded with archival precision.
+        </p>
+
+        <div class="proj-grid">
+
+          <article class="proj-card">
+            <span class="proj-status active">Active</span>
+            <div class="proj-num">— P.01 —</div>
+            <h2 class="proj-title">SensorGrid Analytics Dashboard</h2>
+            <p class="proj-body">Real-time visualisation platform for distributed IoT sensor arrays. Processes 50k+ events/sec with sub-100ms latency. Deployed across 3 research institutes.</p>
+            <div class="proj-stack">
+              <span class="tech">Python</span>
+              <span class="tech">InfluxDB</span>
+              <span class="tech">React</span>
+              <span class="tech">WebSocket</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">— P.02 —</div>
+            <h2 class="proj-title">ReproduciblePipe Framework</h2>
+            <p class="proj-body">Open-source toolkit for reproducible computational research pipelines. Semantic versioning + provenance tracking + one-command replication.</p>
+            <div class="proj-stack">
+              <span class="tech">Docker</span>
+              <span class="tech">Snakemake</span>
+              <span class="tech">Git</span>
+              <span class="tech">YAML</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">— P.03 —</div>
+            <h2 class="proj-title">Climate Data Archive v2</h2>
+            <p class="proj-body">Long-term archival system for 40 years of regional climate measurements. Migrated 2.3TB of legacy formats to standardised NetCDF with full metadata provenance.</p>
+            <div class="proj-stack">
+              <span class="tech">NetCDF</span>
+              <span class="tech">Python</span>
+              <span class="tech">PostgreSQL</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">— P.04 —</div>
+            <h2 class="proj-title">Research Identity System</h2>
+            <p class="proj-body">This portfolio — a brutalist-archival web presence for science researchers. OULIPO constraint-driven design applied to professional identity.</p>
+            <div class="proj-stack">
+              <span class="tech">Next.js</span>
+              <span class="tech">MDX</span>
+              <span class="tech">CSS</span>
+              <span class="tech">Vercel</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CV
+    ════════════════════ -->
+    <section class="page" id="page-cv">
+      <div class="page-inner">
+        <span class="page-num">0 0 4</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Curriculum Vitæ</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Living Document · Updated March 2026</div>
+          </div>
+          <div class="lh-right">
+            <strong>Science &amp; Technology</strong>
+            Zürich, CH
+          </div>
+        </header>
+
+        <div class="cv-header">
+          <div>
+            <h1 class="cv-name">Your Name</h1>
+            <div class="cv-role">Researcher · Engineer · [Your Discipline]</div>
+            <p class="cv-bio">Researcher working at the intersection of [your fields]. Committed to rigorous, reproducible, and openly documented science. Based in Zürich. Affiliated with [your institution].</p>
+          </div>
+          <div class="cv-contacts">
+            <a href="#">your@email.ch</a>
+            <a href="#">github.com/you</a>
+            <a href="#">orcid.org/xxxx</a>
+            <a href="#">scholar.google.com</a>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <div class="cv-section">
+          <div class="section-label">§ Education</div>
+          <div class="cv-entry">
+            <div class="cv-date">2020–2024</div>
+            <div>
+              <div class="cv-entry-title">Ph.D. in [Your Discipline]</div>
+              <div class="cv-entry-inst">ETH Zürich / University of Zürich</div>
+              <div class="cv-entry-desc">Thesis: "Title of Your Doctoral Research." Supervised by Prof. X. Funded by [grant/fellowship].</div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-date">2017–2020</div>
+            <div>
+              <div class="cv-entry-title">M.Sc. in [Your Field]</div>
+              <div class="cv-entry-inst">Your University</div>
+              <div class="cv-entry-desc">Graduated with distinction. Master's thesis on [topic]. GPA: x.x/6.0.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Experience</div>
+          <div class="cv-entry">
+            <div class="cv-date">2024–present</div>
+            <div>
+              <div class="cv-entry-title">Postdoctoral Researcher</div>
+              <div class="cv-entry-inst">Your Institute, Zürich</div>
+              <div class="cv-entry-desc">Leading research on [topic]. PI on [grant]. Supervising 2 doctoral students.</div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-date">2022–2023</div>
+            <div>
+              <div class="cv-entry-title">Research Intern</div>
+              <div class="cv-entry-inst">Research Lab / Industry Partner</div>
+              <div class="cv-entry-desc">Applied [method] to [problem]. Published 1 joint paper. Developed open-source tooling.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Technical Skills</div>
+          <div class="skills-grid">
+            <div class="skill-group">
+              <div class="skill-group-title">Languages</div>
+              <div class="skill-items">Python · R · Julia<br>MATLAB · SQL · Bash</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Frameworks</div>
+              <div class="skill-items">PyTorch · NumPy<br>Pandas · Snakemake<br>Docker · Git</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Domains</div>
+              <div class="skill-items">Data Engineering<br>Scientific Computing<br>Systems Design</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-print-btn-row">
+          <button class="print-btn" onclick="window.print()">↓ Export as PDF</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CONTACT
+    ════════════════════ -->
+    <section class="page" id="page-contact">
+      <div class="page-inner">
+        <span class="page-num">0 0 5</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Contact</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Reply Slip · Colophon · Method</div>
+          </div>
+          <div class="lh-right">
+            <strong>Open to</strong>
+            Collaborations · Speaking<br>
+            Consulting · Peer Review
+          </div>
+        </header>
+
+        <div class="contact-grid">
+
+          <div class="reply-slip">
+            <h2 class="reply-title">Send a message</h2>
+            <div class="form-field">
+              <label>Name</label>
+              <input type="text" placeholder="Your name"/>
+            </div>
+            <div class="form-field">
+              <label>Institution / Affiliation</label>
+              <input type="text" placeholder="Where you're writing from"/>
+            </div>
+            <div class="form-field">
+              <label>Subject</label>
+              <input type="text" placeholder="Collaboration / Inquiry / Other"/>
+            </div>
+            <div class="form-field">
+              <label>Message</label>
+              <textarea placeholder="Your inquiry, collaboration idea, or question…"></textarea>
+            </div>
+            <button class="submit-btn">Send Reply →</button>
+          </div>
+
+          <div class="colophon">
+            <div class="colophon-section">
+              <div class="section-label">§ Colophon</div>
+              <p class="body-text" style="font-size:0.78rem;">
+                Typeset in <em>Libre Baskerville</em> (display), 
+                <em>Courier Prime</em> (body), <em>Source Code Pro</em> (labels), 
+                and <em>Homemade Apple</em> (voice). Designed constraint-first — 
+                in the OULIPO tradition. No mockups. Built in the browser.
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Built with</div>
+              <p class="body-text" style="font-size:0.78rem;">
+                HTML · CSS · Vanilla JS (prototype)<br>
+                Next.js 14 · MDX · Vercel (production)<br>
+                Lighthouse score: 98+ across all metrics.
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Connect</div>
+              <div class="social-row">
+                <a class="social-link" href="#">ORCID</a>
+                <a class="social-link" href="#">GitHub</a>
+                <a class="social-link" href="#">Scholar</a>
+                <a class="social-link" href="#">LinkedIn</a>
+                <a class="social-link" href="#">ResearchGate</a>
+              </div>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Philosophy</div>
+              <p class="body-text" style="font-size:0.75rem; font-style:italic;">
+                "The constraint is not a limitation — it is the structure 
+                that makes the work legible." Every design decision follows 
+                a single rule: archival clarity over decorative noise.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="dashed-rule"/>
+        <p style="text-align:center; font-family:'Courier Prime',monospace; font-size:0.75rem; opacity:0.45; font-style:italic;">
+          Au moment du lancement — bien oulipiennement —
+          <span class="hand" style="font-size:1.2rem; vertical-align:middle; margin-left:0.5rem;">votre portfolio.</span>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+/* ═══════════════════════════════════════
+   OULIPO PORTFOLIO — main.js
+   Navigation · Filters · Reveal
+═══════════════════════════════════════ */
+
+// ── PAGE NAVIGATION ──
+function navigate(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  const page = document.getElementById('page-' + pageId);
+  const navBtn = document.querySelector(`[data-page="${pageId}"]`);
+
+  if (page)   page.classList.add('active');
+  if (navBtn) navBtn.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  triggerReveals();
+}
+
+// ── SIDEBAR NAV BUTTONS ──
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => navigate(btn.dataset.page));
+});
+
+// ── PUBLICATION FILTER ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.pub-item').forEach(item => {
+      item.style.display =
+        (filter === 'all' || item.dataset.type === filter) ? 'grid' : 'none';
+    });
+  });
+});
+
+// ── REVEAL ON SCROLL ──
+function triggerReveals() {
+  const reveals = document.querySelectorAll('.page.active .reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('v');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+
+  // Immediately reveal above-fold elements
+  setTimeout(() => {
+    reveals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('v');
+    });
+  }, 80);
+}
+
+// ── MOBILE SIDEBAR TOGGLE ──
+// Inject hamburger on small screens
+function initMobileNav() {
+  if (window.innerWidth <= 700) {
+    if (!document.getElementById('hamburger')) {
+      const btn = document.createElement('button');
+      btn.id = 'hamburger';
+      btn.innerHTML = '☰';
+      btn.style.cssText = `
+        position:fixed; top:1rem; left:1rem; z-index:200;
+        font-size:1.2rem; background:var(--ink); color:var(--vellum);
+        border:none; padding:0.3em 0.5em; cursor:pointer;
+        font-family:'Source Code Pro',monospace;
+      `;
+      btn.addEventListener('click', () => {
+        document.querySelector('.sidebar').classList.toggle('open');
+      });
+      document.body.appendChild(btn);
+    }
+  }
+}
+
+window.addEventListener('resize', initMobileNav);
+initMobileNav();
+
+// ── INIT ──
+triggerReveals();
+
+</script>
+</body>
+</html>

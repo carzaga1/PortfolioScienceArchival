@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Carlos Arzaga — Data Scientist, Researcher & Clinical Neurophysiologist. EEG · Machine Learning · Pediatric Neurocritical Care. Zürich, Switzerland."/>
+<title>Carlos Arzaga — Research Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   OULIPO PORTFOLIO — main.css
+   Science & Technology · Archival & Scholarly
+   Full-width · Homemade Apple · Sprint 1
+═══════════════════════════════════════════════════ */
+
+/* ── TOKENS ── */
+:root {
+  --vellum:        #f0e9d6;
+  --vellum-dark:   #e5dbc4;
+  --vellum-mid:    #d8ccb0;
+  --ink:           #181510;
+  --ink-2:         #2e2a20;
+  --ink-3:         #4a4535;
+  --cobalt:        #1d3a8a;
+  --cobalt-hi:     rgba(29, 58, 138, 0.68);
+  --cobalt-tint:   rgba(29, 58, 138, 0.09);
+  --red:           #8b1a1a;
+  --green:         #1a5c3a;
+  --sidebar-w:     220px;
+  --page-pad:      3.5rem 4rem;
+  --page-pad-mob:  2rem 1.5rem;
+
+  --f-serif:  'Libre Baskerville', Georgia, serif;
+  --f-mono:   'Courier Prime', 'Courier New', monospace;
+  --f-code:   'Source Code Pro', monospace;
+  --f-hand:   'Homemade Apple', cursive;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+button { border: none; background: none; cursor: pointer; }
+a { color: inherit; }
+input, textarea { font-family: inherit; }
+
+/* ── BODY ── */
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #0e0c09;
+  color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 50% 60% at 15% 50%,
+      rgba(29,58,138,0.06) 0%, transparent 65%);
+}
+
+/* ══════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════ */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: #13110d;
+  border-right: 1px solid rgba(240,233,214,0.07);
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-brand {
+  padding: 0 1.8rem 2rem;
+  border-bottom: 1px solid rgba(240,233,214,0.07);
+  margin-bottom: 1.5rem;
+}
+
+.brand-word {
+  font-family: var(--f-code);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--vellum);
+  opacity: 0.9;
+}
+
+.brand-rule {
+  width: 28px; height: 2px;
+  background: var(--cobalt);
+  margin: 6px 0;
+}
+
+.brand-sub {
+  font-family: var(--f-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: rgba(240,233,214,0.3);
+  line-height: 1.5;
+}
+
+/* ── NAV ITEMS ── */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0;
+  font-family: var(--f-code);
+  font-size: 0.63rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,233,214,0.4);
+  transition: color 0.15s, background 0.15s;
+  text-align: left;
+  width: 100%;
+  border-left: 2px solid transparent;
+}
+
+.nav-item:hover {
+  color: rgba(240,233,214,0.8);
+  background: rgba(240,233,214,0.04);
+}
+
+.nav-item.active {
+  color: var(--vellum);
+  border-left-color: var(--cobalt);
+  background: rgba(29,58,138,0.1);
+}
+
+.nav-glyph {
+  color: var(--cobalt);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.nav-item.active .nav-glyph { opacity: 1; }
+
+/* sidebar-stamp removed */
+
+/* ══════════════════════════════════════════
+   MAIN CONTENT AREA
+══════════════════════════════════════════ */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+  background: var(--vellum);
+  position: relative;
+}
+
+/* paper grain overlay */
+.main::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* ── PAGE SECTIONS ── */
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  animation: pageIn 0.4s ease both;
+}
+
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-inner {
+  padding: var(--page-pad);
+  max-width: 1200px;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════
+   SHARED COMPONENTS
+══════════════════════════════════════════ */
+
+/* ── PAGE NUMBER ── */
+.page-num {
+  position: absolute;
+  top: 1.5rem; right: 2.5rem;
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-3);
+  opacity: 0.35;
+}
+
+/* ── LETTERHEAD ── */
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  border-bottom: 2.5px solid var(--ink);
+  margin-bottom: 3rem;
+}
+
+.lh-brand {
+  font-family: var(--f-code);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.lh-rule {
+  width: 32px; height: 2.5px;
+  background: var(--ink);
+  margin: 5px 0;
+}
+
+.lh-sub {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  opacity: 0.6;
+}
+
+.lh-right {
+  text-align: right;
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+
+.lh-right strong {
+  display: block;
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+/* ── HANDWRITING ── */
+.hand {
+  font-family: var(--f-hand);
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cobalt);
+  opacity: 0.22;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-family: var(--f-mono);
+  font-size: 0.9rem;
+  line-height: 2;
+  color: var(--ink-2);
+  margin-bottom: 1.4rem;
+  max-width: 720px;
+}
+
+/* ── HIGHLIGHT ── */
+mark {
+  background: var(--cobalt-hi);
+  color: #fff;
+  padding: 0.06em 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-radius: 1px;
+  font-style: normal;
+}
+
+.hl-subtle {
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+  padding: 0.04em 0.2em;
+  font-weight: 700;
+}
+
+/* ── DASHED RULE ── */
+.dashed-rule {
+  border: none;
+  border-top: 1px dashed var(--ink-3);
+  opacity: 0.25;
+  margin: 2.5rem 0;
+}
+
+/* ── TAGS ── */
+.tag {
+  display: inline-block;
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.12em 0.45em;
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+  border-radius: 0;
+}
+.tag.red  { background: rgba(139,26,26,0.08); color: var(--red); }
+.tag.green{ background: rgba(26,92,58,0.1);   color: var(--green); }
+
+/* ══════════════════════════════════════════
+   HOME PAGE
+══════════════════════════════════════════ */
+.salut-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.salut-row .hand {
+  font-size: 2.8rem;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.home-card {
+  border: 1px solid var(--ink);
+  padding: 1.2rem 1.3rem 1.4rem;
+  background: var(--vellum-dark);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.home-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--cobalt);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.home-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.home-card:hover::before { transform: scaleX(1); }
+
+.hc-num {
+  font-family: var(--f-code);
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--cobalt);
+  opacity: 0.35;
+  margin-bottom: 0.6rem;
+  line-height: 1;
+}
+
+.hc-title {
+  font-family: var(--f-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+}
+
+.hc-body {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  line-height: 1.75;
+  color: var(--ink-3);
+  margin-bottom: 0.8rem;
+}
+
+.hc-arrow {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--cobalt);
+}
+
+/* ── DECISION TREE ── */
+.dt-section {
+  margin: 1rem 0 2.5rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px dashed rgba(0,0,0,0.18);
+}
+
+.dt-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.dt-root {
+  font-size: 1.6rem;
+  align-self: center;
+}
+
+.dt-branches {
+  border-left: 2px solid var(--ink);
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.dt-b {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0;
+}
+
+.dt-b::before { content: '→'; color: var(--cobalt); font-weight: 700; }
+.dt-b.dead { opacity: 0.3; text-decoration: line-through; }
+
+.dt-foot {
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-3);
+  opacity: 0.4;
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+/* ── SIGN BLOCK ── */
+.sign-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.sign-left {
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--ink-3);
+}
+
+.sign-right { text-align: right; }
+
+.sign-name {
+  font-size: 2.4rem;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.sign-title {
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+
+/* ── STAMP ── */
+.stamp {
+  position: absolute;
+  bottom: 6rem; left: 50%;
+  transform: translateX(-50%) rotate(-7deg);
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--cobalt);
+  opacity: 0.15;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stamp-inner {
+  font-family: var(--f-code);
+  font-size: 0.42rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════
+   RESEARCH PAGE
+══════════════════════════════════════════ */
+.filter-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--ink-3);
+  color: var(--ink-3);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--vellum);
+  border-color: var(--ink);
+}
+
+.pub-list { }
+
+.pub-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.pub-item:last-child { border-bottom: none; }
+
+.pub-year {
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--cobalt);
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.pub-title {
+  font-family: var(--f-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.pub-meta {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+}
+
+.pub-abstract {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.pub-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════════
+   PROJECTS PAGE
+══════════════════════════════════════════ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+
+.proj-card {
+  border: 1px solid var(--ink);
+  padding: 1.3rem 1.3rem 1.4rem;
+  background: var(--vellum-dark);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border-radius: 8px;
+}
+
+.proj-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--cobalt);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.2s ease;
+}
+
+.proj-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--cobalt);
+}
+
+.proj-card:hover::before { transform: scaleY(1); }
+
+.proj-status {
+  position: absolute;
+  top: 0.9rem; right: 0.9rem;
+  font-family: var(--f-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.15em 0.45em;
+  border: 1px solid;
+}
+
+.proj-status.active   { color: var(--green); border-color: var(--green); background: rgba(26,92,58,0.08); }
+.proj-status.ongoing  { color: var(--cobalt); border-color: var(--cobalt); background: rgba(29,58,138,0.08); }
+.proj-status.archived { color: var(--ink-3); border-color: var(--ink-3); background: rgba(0,0,0,0.04); }
+
+.proj-num {
+  font-family: var(--f-code);
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--cobalt);
+  opacity: 0.35;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+.proj-title {
+  font-family: var(--f-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+  padding-right: 3rem;
+}
+
+.proj-body {
+  font-family: var(--f-mono);
+  font-size: 0.73rem;
+  line-height: 1.75;
+  color: var(--ink-3);
+  margin-bottom: 0.8rem;
+}
+
+.proj-stack { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+.tech {
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  padding: 0.12em 0.4em;
+  border: 1px solid var(--ink-3);
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════
+   CV PAGE
+══════════════════════════════════════════ */
+.cv-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  align-items: start;
+}
+
+.cv-name {
+  font-family: var(--f-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.cv-role {
+  font-family: var(--f-mono);
+  font-size: 0.85rem;
+  color: var(--cobalt);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.8rem;
+}
+
+.cv-bio {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--ink-2);
+  max-width: 540px;
+}
+
+.cv-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: right;
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  line-height: 2;
+}
+
+.cv-contacts a {
+  color: var(--cobalt);
+  text-decoration: none;
+  transition: opacity 0.12s;
+}
+
+.cv-contacts a:hover { opacity: 0.6; }
+
+.cv-section { margin: 2rem 0; }
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.cv-entry:last-child { border-bottom: none; }
+
+.cv-date {
+  font-family: var(--f-code);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  color: var(--cobalt);
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.cv-entry-title {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.cv-entry-inst {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.cv-entry-desc {
+  font-family: var(--f-mono);
+  font-size: 0.73rem;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.skill-group-title {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(29,58,138,0.2);
+}
+
+.skill-items {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+  line-height: 1.9;
+  padding-left: 0.6rem;
+  border-left: 1px solid rgba(0,0,0,0.08);
+}
+
+.cv-print-btn-row {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(0,0,0,0.15);
+}
+
+.print-btn {
+  font-family: var(--f-code);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5em 1.2em;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.print-btn:hover {
+  background: var(--ink);
+  color: var(--vellum);
+}
+
+/* ══════════════════════════════════════════
+   CONTACT PAGE
+══════════════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 1.5rem 0;
+}
+
+.reply-slip {
+  border: 1px solid var(--ink);
+  padding: 2rem;
+  background: var(--vellum-dark);
+  position: relative;
+  border-radius: 8px;
+}
+
+.reply-slip::before {
+  content: '— cut here and return —';
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--vellum-dark);
+  padding: 0 0.6rem;
+  font-family: var(--f-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.reply-title {
+  font-family: var(--f-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.form-field { margin-bottom: 1.1rem; }
+
+.form-field label {
+  display: block;
+  font-family: var(--f-code);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 0.35rem;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  background: var(--vellum);
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  padding: 0.45em 0;
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus { border-bottom-color: var(--cobalt); }
+.form-field textarea { height: 90px; }
+
+.submit-btn {
+  width: 100%;
+  font-family: var(--f-code);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.65em 1em;
+  background: var(--ink);
+  color: var(--vellum);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover { background: var(--cobalt); }
+
+.colophon { display: flex; flex-direction: column; gap: 0.25rem; }
+.colophon-section { margin-bottom: 1.25rem; }
+
+.social-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+
+.social-link {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25em 0.6em;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.12s;
+}
+
+.social-link:hover {
+  background: var(--cobalt);
+  border-color: var(--cobalt);
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.v { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(2) { transition-delay: 0.07s; }
+.reveal:nth-child(3) { transition-delay: 0.14s; }
+.reveal:nth-child(4) { transition-delay: 0.21s; }
+.reveal:nth-child(5) { transition-delay: 0.28s; }
+
+/* ══════════════════════════════════════════
+   PRINT STYLES
+══════════════════════════════════════════ */
+@media print {
+  .sidebar, .filter-row, .cv-print-btn-row { display: none !important; }
+  .main { margin-left: 0; }
+  body { background: white; }
+  .page-inner { padding: 1.5cm 2cm; }
+  .pub-item, .cv-entry { break-inside: avoid; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .home-grid     { grid-template-columns: 1fr 1fr; }
+  .proj-grid     { grid-template-columns: 1fr 1fr; }
+  .skills-grid   { grid-template-columns: 1fr 1fr; }
+  .contact-grid  { grid-template-columns: 1fr; }
+  .cv-header     { grid-template-columns: 1fr; }
+  .cv-contacts   { text-align: left; }
+}
+
+@media (max-width: 700px) {
+  :root { --sidebar-w: 0px; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    width: 220px;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .page-inner { padding: var(--page-pad-mob); }
+  .home-grid  { grid-template-columns: 1fr; }
+  .proj-grid  { grid-template-columns: 1fr; }
+  .letterhead { flex-direction: column; gap: 1rem; }
+  .lh-right   { text-align: left; }
+  .sign-block { flex-direction: column; gap: 1.5rem; }
+  .pub-item   { grid-template-columns: 1fr; gap: 0.4rem; }
+  .cv-entry   { grid-template-columns: 1fr; gap: 0.3rem; }
+  .salut-row .hand { font-size: 2rem; }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- ══ SIDEBAR NAV ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-word">C. Arzaga</span>
+      <div class="brand-rule"></div>
+      <span class="brand-sub">Data Scientist · Neurophysiologist</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-page="home">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-page="research">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Research</span>
+      </button>
+      <button class="nav-item" data-page="projects">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Projects</span>
+      </button>
+      <button class="nav-item" data-page="cv">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">CV / About</span>
+      </button>
+      <button class="nav-item" data-page="contact">
+        <span class="nav-glyph">§</span>
+        <span class="nav-label">Contact</span>
+      </button>
+    </nav>
+
+
+  </aside>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="main">
+
+    <!-- ════════════════════
+         HOME / COVER LETTER
+    ════════════════════ -->
+    <section class="page active" id="page-home">
+      <div class="page-inner">
+        <span class="page-num">0 0 1</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Carlos Arzaga</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Data Scientist · Researcher · Clinical Neurophysiologist</div>
+          </div>
+          <div class="lh-right">
+            <strong>Research Portfolio</strong>
+            Zürich, Switzerland<br>
+            github.com/carzaga1
+          </div>
+        </header>
+
+        <div class="salut-row">
+          <span class="hand">A quien corresponda,</span>
+        </div>
+
+        <p class="body-text">
+          Estimados colegas, colaboradores y curiosos — welcome to a 
+          professional presence built at <mark>the intersection of clinical 
+          neuroscience and machine learning</mark>. Not a brochure. A living 
+          record: of EEG signals decoded, algorithms evaluated, and knowledge 
+          contributed at the frontier of pediatric neurocritical care.
+        </p>
+
+        <p class="body-text">
+          Dynamic Data Scientist with deep domain expertise as a Clinical 
+          Neurophysiologist at the University Children's Hospital Zürich (KISPI). 
+          Passionate about <span class="hl-subtle">Healthcare Foundation Models · 
+          XAI · Generalizability · Clinical Biomarkers · Precision Medicine.</span>
+        </p>
+
+        <hr class="dashed-rule"/>
+
+        <div class="section-label">§ What you will find here</div>
+
+        <div class="home-grid">
+          <div class="home-card" onclick="navigate('research')">
+            <div class="hc-num">001</div>
+            <div class="hc-title">Research &amp; Publications</div>
+            <div class="hc-body">Peer-reviewed publications and conference abstracts in EEG analysis, burst suppression detection, and unsupervised deep learning for clinical neurophysiology.</div>
+            <div class="hc-arrow">→ View Archive</div>
+          </div>
+          <div class="home-card" onclick="navigate('projects')">
+            <div class="hc-num">002</div>
+            <div class="hc-title">Projects &amp; Case Studies</div>
+            <div class="hc-body">From M.Sc. thesis ML pipelines to EEG annotation infrastructure and real-time neuromonitoring systems. Method, stack, outcome, and status documented.</div>
+            <div class="hc-arrow">→ View Projects</div>
+          </div>
+          <div class="home-card" onclick="navigate('cv')">
+            <div class="hc-num">003</div>
+            <div class="hc-title">Curriculum Vitæ</div>
+            <div class="hc-body">Clinical, research, and technical experience across KISPI, USZ, and UT Dallas. Education, certifications, and language proficiency — typeset as a living document.</div>
+            <div class="hc-arrow">→ View CV</div>
+          </div>
+          <div class="home-card" onclick="navigate('contact')">
+            <div class="hc-num">004</div>
+            <div class="hc-title">Contact &amp; Colophon</div>
+            <div class="hc-body">Open to research collaborations, clinical informatics projects, and interdisciplinary inquiries at the intersection of neuroscience and data science.</div>
+            <div class="hc-arrow">→ Get in Touch</div>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <!-- DECISION TREE -->
+        <div class="dt-section">
+          <div class="dt-wrap">
+            <span class="hand dt-root">La señal persiste.</span>
+            <div class="dt-branches">
+              <div class="dt-b"><mark>se analiza</mark> — señal por señal, paciente por paciente</div>
+              <div class="dt-b"><mark>se generaliza</mark> — validado en datos heterogéneos y no vistos</div>
+              <div class="dt-b"><mark>se documenta</mark> — revisado por pares, abierto, atribuido</div>
+              <div class="dt-b dead">no llegar — no es una opción</div>
+            </div>
+          </div>
+          <div class="dt-foot">en la reunión del portafolio · III · 2026</div>
+        </div>
+
+        <!-- SIGN BLOCK -->
+        <div class="sign-block">
+          <div class="sign-left">
+            Al momento del lanzamiento,<br>
+            con todo el rigor <span class="hl-subtle">archival</span> —
+          </div>
+          <div class="sign-right">
+            <div class="hand sign-name">Carlos Arzaga</div>
+            <div class="sign-title">Data Scientist · KISPI · Zürich</div>
+          </div>
+        </div>
+
+        <!-- STAMP -->
+        <div class="stamp" aria-hidden="true">
+          <div class="stamp-inner">EEG<br>ML<br>KISPI<br>2026</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         RESEARCH
+    ════════════════════ -->
+    <section class="page" id="page-research">
+      <div class="page-inner">
+        <span class="page-num">0 0 2</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Research Archive</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Publications · Conference Abstracts · Posters</div>
+          </div>
+          <div class="lh-right">
+            <strong>Archival Record</strong>
+            Updated March 2026
+          </div>
+        </header>
+
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="journal">Journal</button>
+          <button class="filter-btn" data-filter="conference">Conference</button>
+          <button class="filter-btn" data-filter="thesis">Thesis</button>
+        </div>
+
+        <div class="pub-list" id="pub-list">
+
+          <article class="pub-item" data-type="journal">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability</h2>
+              <div class="pub-meta">
+                Arzaga, C., Staubli, O., Birbaumer, M., Ramantani, G., &amp; Keller, E.<br>
+                <em>Clinical and Translational Neuroscience</em> · Vol. 9, No. 4, Article 45 [Abstract P136]<br>
+                DOI: <a href="https://doi.org/10.3390/ctn9040045" target="_blank" style="color:var(--cobalt);">10.3390/ctn9040045</a>
+                · 6th Swiss Congress of Clinical Neurophysiology, 2025
+              </div>
+              <p class="pub-abstract">
+                Assessed the generalizability of a pre-validated unsupervised algorithm (BSUPP) for Burst Suppression 
+                pattern (BSP) detection on pediatric continuous EEG data (~12 hours, 4 PICU patients, University 
+                Children's Hospital Zürich). Developed a novel ensemble architecture combining BSUPP with a denoising 
+                Variational Autoencoder (dVAE), improving AUROC from 0.41 to 0.53 — a 30% increase — with perfect 
+                recall of 1.00 for burst detection on single-patient inference.
+              </p>
+              <div class="pub-tags">
+                <span class="tag">Journal Abstract</span>
+                <span class="tag green">Peer-Reviewed</span>
+                <span class="tag">EEG</span>
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Pediatric Neurocritical Care</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="conference">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability [Poster P136]</h2>
+              <div class="pub-meta">
+                Arzaga, C., Staubli, O., Birbaumer, M., Ramantani, G., &amp; Keller, E.<br>
+                <em>6th Swiss Congress of Clinical Neurophysiology</em><br>
+                Affiliations: University Children's Hospital Zürich (KISPI) · HSLU · University Hospital Zürich (USZ)
+              </div>
+              <p class="pub-abstract">
+                Poster presentation evaluating a dVAE+BSUPP ensemble architecture for automated BSP detection. Phase I 
+                tested the BSUPP surrogate model on ~12 hours of unseen pediatric cEEG data (4 PICU patients, status 
+                epilepticus), revealing limited direct generalizability (mean AUROC = 0.41). Phase II developed the 
+                novel ensemble through extensive hyperparameter experiments, achieving AUROC = 0.53 — a 30% 
+                improvement — with perfect burst recall of 1.00 on single-patient inference. Highlights unsupervised 
+                deep learning's potential for real-time automated BSP detection in clinical contexts.
+              </p>
+              <div class="pub-tags">
+                <span class="tag">Conference Poster</span>
+                <span class="tag green">Presented</span>
+                <span class="tag">dVAE</span>
+                <span class="tag">Burst Suppression</span>
+                <span class="tag">Generalizability</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="thesis">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability</h2>
+              <div class="pub-meta">
+                Arzaga, C.<br>
+                <em>M.Sc. Thesis — Applied Information and Data Science</em><br>
+                HSLU – Lucerne University of Applied Sciences and Arts · Feb 2023 – Sep 2025
+              </div>
+              <p class="pub-abstract">
+                Master's thesis investigating the generalizability of unsupervised ML algorithms for burst suppression 
+                pattern detection in pediatric cEEG data. Conducted in collaboration with the ICU Cockpit Research Group 
+                at USZ. Built a Label Studio annotation pipeline, curated and pre-processed EEG signals from 4 PICU 
+                patients with status epilepticus, and developed the dVAE+BSUPP ensemble architecture through 
+                hyperparameter optimisation experiments. Addresses the critical gap that fewer than 1% of 10,462 
+                healthcare ML algorithms reported external validation.
+              </p>
+              <div class="pub-tags">
+                <span class="tag red">M.Sc. Thesis</span>
+                <span class="tag">HSLU</span>
+                <span class="tag">Unsupervised ML</span>
+                <span class="tag">EEG Signal Processing</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <hr class="dashed-rule"/>
+        <div class="section-label">§ Research Interests</div>
+        <p class="body-text" style="font-size:0.82rem;">
+          Healthcare Foundation Models &nbsp;·&nbsp; Explainable AI (XAI) &nbsp;·&nbsp;
+          Generalizability of Clinical ML Models &nbsp;·&nbsp;
+          EEG Biomarkers &nbsp;·&nbsp; Precision Medicine &nbsp;·&nbsp;
+          Neurocritical Care Informatics &nbsp;·&nbsp; Pediatric Epilepsy
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         PROJECTS
+    ════════════════════ -->
+    <section class="page" id="page-projects">
+      <div class="page-inner">
+        <span class="page-num">0 0 3</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Index</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Trabajo aplicado · Herramientas · Casos de estudio</div>
+          </div>
+          <div class="lh-right">
+            <strong>Case Studies</strong>
+            Method · Stack · Outcome
+          </div>
+        </header>
+
+        <p class="body-text">
+          Applied research outputs, clinical data infrastructure, and ML systems. 
+          Each project is a <mark>documented artefact</mark> — method, stack, 
+          outcome, and status recorded with archival precision.
+        </p>
+
+        <div class="proj-grid">
+
+          <article class="proj-card">
+            <span class="proj-status active">Completed</span>
+            <div class="proj-num">001</div>
+            <h2 class="proj-title">dVAE+BSUPP Ensemble — M.Sc. Thesis</h2>
+            <p class="proj-body">Novel unsupervised deep learning ensemble combining a denoising Variational Autoencoder with the BSUPP algorithm for burst suppression detection in pediatric cEEG. Achieved 30% AUROC improvement with perfect burst recall. KISPI · HSLU · USZ.</p>
+            <div class="proj-stack">
+              <span class="tech">PyTorch</span>
+              <span class="tech">Python</span>
+              <span class="tech">EEG</span>
+              <span class="tech">dVAE</span>
+              <span class="tech">W&amp;B</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">002</div>
+            <h2 class="proj-title">EEG Annotation Pipeline — ICU Cockpit</h2>
+            <p class="proj-body">Built a new end-to-end EEG data annotation pipeline using Label Studio for the ICU Cockpit Research Group at USZ. Curated and pre-processed continuous EEG signals from neurocritical patients; evaluated performance of multiple burst-suppression detection models.</p>
+            <div class="proj-stack">
+              <span class="tech">Label Studio</span>
+              <span class="tech">Python</span>
+              <span class="tech">scikit-learn</span>
+              <span class="tech">Docker</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">003</div>
+            <h2 class="proj-title">EEG + fNIRS Neurocritical Monitoring</h2>
+            <p class="proj-body">Executed EEG and fNIRS studies on neurocritical patients at USZ. Supported PI research on neurocritical biomarkers, managed all resulting data, and developed study design for integrating commercial EEG/NIRS systems via systematic literature review.</p>
+            <div class="proj-stack">
+              <span class="tech">EEG</span>
+              <span class="tech">fNIRS</span>
+              <span class="tech">REDCap</span>
+              <span class="tech">Python</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">004</div>
+            <h2 class="proj-title">Intraoperative Neurophysiology Monitoring</h2>
+            <p class="proj-body">Analysed real-time EEG and single-cell data for DBS implantation (Parkinson's/Epilepsy) at USZ. Previously executed comprehensive IOM strategies in the US — SSEPs, AEPs, VEPs — and developed training protocols for new neurophysiology staff at Monitoring Concepts.</p>
+            <div class="proj-stack">
+              <span class="tech">EEG</span>
+              <span class="tech">SSEPs</span>
+              <span class="tech">DBS</span>
+              <span class="tech">IOM</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">005</div>
+            <h2 class="proj-title">Research Identity System — This Portfolio</h2>
+            <p class="proj-body">A brutalist-archival web portfolio for documenting scientific identity, publications, and projects. OULIPO constraint-driven design applied to professional presence. Built in the browser, deployed via GitHub + Vercel.</p>
+            <div class="proj-stack">
+              <span class="tech">HTML</span>
+              <span class="tech">CSS</span>
+              <span class="tech">JS</span>
+              <span class="tech">GitHub</span>
+              <span class="tech">Vercel</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">006</div>
+            <h2 class="proj-title">Memory Biomarkers — Aging &amp; Memory Lab</h2>
+            <p class="proj-body">Research assistant at UT Dallas Aging and Memory Research Laboratory. Executed electrophysiology and genetics protocols to identify memory biomarkers in rodent tissue. Managed tissue histology, blood collection, and data for doctoral student thesis.</p>
+            <div class="proj-stack">
+              <span class="tech">Electrophysiology</span>
+              <span class="tech">Histology</span>
+              <span class="tech">Genetics</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CV
+    ════════════════════ -->
+    <section class="page" id="page-cv">
+      <div class="page-inner">
+        <span class="page-num">0 0 4</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Curriculum Vitæ</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Living Document · Updated March 2026</div>
+          </div>
+          <div class="lh-right">
+            <strong>Data Scientist · Researcher</strong>
+            Zürich, Switzerland
+          </div>
+        </header>
+
+        <div class="cv-header">
+          <div>
+            <h1 class="cv-name">Carlos Arzaga</h1>
+            <div class="cv-role">Data Scientist · Researcher · Clinical Neurophysiologist</div>
+            <p class="cv-bio">Dynamic Data Scientist and researcher with deep domain expertise as a Clinical Neurophysiologist. Adept at utilising machine learning algorithms to analyse complex biomedical data, driving actionable insights, and impactful research. Passionate about advancing healthcare technologies through innovative solutions and interdisciplinary collaboration.</p>
+          </div>
+          <div class="cv-contacts">
+            <a href="/cdn-cgi/l/email-protection#bbf8dac9d7d4c895fac9c1dadcdafbd0d2c8cbd295cec1d395d8d3"><span class="__cf_email__" data-cfemail="7b381a09171408553a09011a1c1a3b1012080b12550e0113551813">[email&#160;protected]</span></a>
+            <a href="tel:+41768052521">+41 76 805 25 21</a>
+            <a href="https://github.com/carzaga1" target="_blank">github.com/carzaga1</a>
+            <a href="https://doi.org/10.3390/ctn9040045" target="_blank">DOI · Publication</a>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <div class="cv-section">
+          <div class="section-label">§ Education</div>
+          <div class="cv-entry">
+            <div class="cv-date">Feb 2023 — Sep 2025</div>
+            <div>
+              <div class="cv-entry-title">M.Sc. Applied Information and Data Science</div>
+              <div class="cv-entry-inst">HSLU – Lucerne University of Applied Sciences and Arts · Lucerne, Switzerland</div>
+              <div class="cv-entry-desc">Thesis: "An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability." Conducted in collaboration with the ICU Cockpit Research Group, University Hospital Zürich.</div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2016 — May 2018</div>
+            <div>
+              <div class="cv-entry-title">B.Sc. Neuroscience</div>
+              <div class="cv-entry-inst">University of Texas at Dallas · Dallas, TX, USA</div>
+              <div class="cv-entry-desc">Undergraduate research in electrophysiology and memory biomarkers at the Aging and Memory Research Laboratory.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Experience</div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Feb 2024 — Present</div>
+            <div>
+              <div class="cv-entry-title">Neurophysiology Specialist — Neurology | EEG/Epilepsy</div>
+              <div class="cv-entry-inst">University Children's Hospital Zürich (KISPI) · Zürich, Switzerland</div>
+              <div class="cv-entry-desc">Performed, analysed, and assisted in diagnosis of outpatient, inpatient, and long-term (Telemetry) EEGs. Performed evoked potentials (SSEPs, AEPs, VEPs). Served as clinical annotator for EEGs supporting ongoing epilepsy research studies. Assisted as educating preceptor to new rotating medical residents.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2023 — Jan 2024</div>
+            <div>
+              <div class="cv-entry-title">Visiting Graduate Researcher — ICU Cockpit Research Group</div>
+              <div class="cv-entry-inst">University Hospital Zürich (USZ) · Zürich, Switzerland</div>
+              <div class="cv-entry-desc">Project: Evaluation of Burst-Suppression Detection Models. Evaluated ML models for automatic burst-suppression detection in EEG signals. Built a new data annotation pipeline using Label Studio. Curated and pre-processed EEG signals; evaluated performance of several detection models.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Nov 2020 — Jan 2024</div>
+            <div>
+              <div class="cv-entry-title">Neurophysiology Specialist — Neurology | EEG/Epilepsy</div>
+              <div class="cv-entry-inst">University Hospital Zürich (USZ) · Zürich, Switzerland</div>
+              <div class="cv-entry-desc">Analysed real-time EEG/single-cell data for DBS implantation (Parkinson's/Epilepsy). Supported PI research on neurocritical biomarkers using EEG and fNIRS systems. Executed EEG + fNIRS studies on neurocritical patients. Developed study design for integrating commercial EEG/NIRS systems via literature review.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2018 — Sep 2020</div>
+            <div>
+              <div class="cv-entry-title">Surgical Neurophysiologist</div>
+              <div class="cv-entry-inst">Monitoring Concepts (US IOM) · Dallas, TX, USA</div>
+              <div class="cv-entry-desc">Analysed neurodiagnostic tests to maintain nervous system integrity during surgery. Executed comprehensive intraoperative monitoring strategies with surgical/anaesthesia teams. Developed training protocols and served as educational preceptor to new staff.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2017 — Dec 2018</div>
+            <div>
+              <div class="cv-entry-title">Research Assistant — Aging and Memory Research Laboratory</div>
+              <div class="cv-entry-inst">University of Texas at Dallas · Dallas, TX, USA</div>
+              <div class="cv-entry-desc">Executed electrophysiology/genetics to find memory biomarkers in rodent tissue. Managed tissue histology, blood collection, and data for doctoral student thesis. Managed housing and care for an aging rat colony, ensuring research protocols.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Apr 2015 — Aug 2018</div>
+            <div>
+              <div class="cv-entry-title">Anesthesia Technician — Anesthesiology | Surgery</div>
+              <div class="cv-entry-inst">Baylor Scott &amp; White Medical Center · Plano, TX, USA</div>
+              <div class="cv-entry-desc">Provided critical support to anesthesiologists for surgical procedures and emergencies, including invasive monitor insertion (CVC/arterial) and difficult airway management. Prepared, calibrated, and troubleshot anesthesia delivery systems. Operated Cell Saver equipment.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Technical Skills</div>
+          <div class="skills-grid">
+            <div class="skill-group">
+              <div class="skill-group-title">Programming &amp; DevOps</div>
+              <div class="skill-items">Python · R · HTML<br>Git · Bash · GitLab<br>GitHub · Docker · MLOps</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">AI &amp; Machine Learning</div>
+              <div class="skill-items">PyTorch · TensorFlow<br>Keras · scikit-learn<br>Weights &amp; Biases<br>Time Series Analysis</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Databases &amp; BI</div>
+              <div class="skill-items">MySQL · MongoDB<br>REDCap<br>Tableau · Power BI</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Certifications</div>
+          <div class="cv-entry">
+            <div class="cv-date">Active</div>
+            <div>
+              <div class="cv-entry-desc">
+                Deep Tech Talent Certificate (EIT) &nbsp;·&nbsp;
+                Board Certified in Intraoperative Neurophysiological Monitoring (ABRET) &nbsp;·&nbsp;
+                Good Clinical Practice Modules 1 &amp; 2 (USZ) &nbsp;·&nbsp;
+                Basic Life Support (KISPI)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Languages</div>
+          <div class="cv-entry">
+            <div class="cv-date"></div>
+            <div>
+              <div class="cv-entry-desc">
+                English (Native / bilingual) &nbsp;·&nbsp;
+                Spanish (Native / bilingual) &nbsp;·&nbsp;
+                German (Professional working proficiency)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Personal Interests</div>
+          <div class="cv-entry">
+            <div class="cv-date"></div>
+            <div>
+              <div class="cv-entry-desc">
+                Traveling &nbsp;·&nbsp; Analog Film Photography &nbsp;·&nbsp;
+                Baking &nbsp;·&nbsp; Run Clubs &nbsp;·&nbsp;
+                Basketball &nbsp;·&nbsp; Gravel Cycling
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-print-btn-row">
+          <button class="print-btn" onclick="window.print()">↓ Export as PDF</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CONTACT
+    ════════════════════ -->
+    <section class="page" id="page-contact">
+      <div class="page-inner">
+        <span class="page-num">0 0 5</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Contact</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Reply Slip · Colophon · Method</div>
+          </div>
+          <div class="lh-right">
+            <strong>Open to</strong>
+            Research Collaborations<br>
+            Clinical Informatics · Consulting
+          </div>
+        </header>
+
+        <div class="contact-grid">
+
+          <div class="reply-slip">
+            <h2 class="reply-title">Send a message</h2>
+            <div class="form-field">
+              <label>Name</label>
+              <input type="text" placeholder="Your name"/>
+            </div>
+            <div class="form-field">
+              <label>Institution / Affiliation</label>
+              <input type="text" placeholder="Where you're writing from"/>
+            </div>
+            <div class="form-field">
+              <label>Subject</label>
+              <input type="text" placeholder="Collaboration / Inquiry / Other"/>
+            </div>
+            <div class="form-field">
+              <label>Message</label>
+              <textarea placeholder="Your research inquiry, collaboration idea, or question…"></textarea>
+            </div>
+            <button class="submit-btn">Send Reply →</button>
+          </div>
+
+          <div class="colophon">
+            <div class="colophon-section">
+              <div class="section-label">§ Direct Contact</div>
+              <p class="body-text" style="font-size:0.78rem; line-height:2;">
+                <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Email</span><br>
+                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="165577647a79653857646c777177567d7f65667f38636c7e38757e">[email&#160;protected]</a><br>
+                <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Phone</span><br>
+                +41 76 805 25 21<br>
+                <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Location</span><br>
+                Zürich, Switzerland
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Connect</div>
+              <div class="social-row">
+                <a class="social-link" href="https://github.com/carzaga1" target="_blank">GitHub</a>
+                <a class="social-link" href="https://doi.org/10.3390/ctn9040045" target="_blank">Publication</a>
+                <a class="social-link" href="/cdn-cgi/l/email-protection#d99ab8abb5b6aaf798aba3b8beb899b2b0aaa9b0f7aca3b1f7bab1">Email</a>
+                <a class="social-link" href="https://www.kispi.uzh.ch" target="_blank">KISPI</a>
+              </div>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Colophon</div>
+              <p class="body-text" style="font-size:0.76rem;">
+                Typeset in <em>Libre Baskerville</em> (display),
+                <em>Courier Prime</em> (body), <em>Source Code Pro</em> (labels),
+                and <em>Homemade Apple</em> (voice). Designed constraint-first —
+                in the OULIPO tradition. Built in the browser. Deployed via
+                <a href="https://github.com/carzaga1/PortfolioScienceArchival" target="_blank" style="color:var(--cobalt);">GitHub · Vercel</a>.
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Philosophy</div>
+              <p class="body-text" style="font-size:0.75rem; font-style:italic;">
+                "The constraint is not a limitation — it is the structure
+                that makes the work legible." Archival clarity over decorative noise.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="dashed-rule"/>
+                <p style="text-align:center; font-family:'Courier Prime',monospace; font-size:0.75rem; opacity:0.45; font-style:italic;">
+          Al momento del lanzamiento — con todo el rigor archival —
+          <span class="hand" style="font-size:1.2rem; vertical-align:middle; margin-left:0.5rem;">Carlos Arzaga</span>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+/* ═══════════════════════════════════════
+   OULIPO PORTFOLIO — main.js
+   Navigation · Filters · Reveal
+═══════════════════════════════════════ */
+
+// ── PAGE NAVIGATION ──
+function navigate(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  const page = document.getElementById('page-' + pageId);
+  const navBtn = document.querySelector(`[data-page="${pageId}"]`);
+
+  if (page)   page.classList.add('active');
+  if (navBtn) navBtn.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  triggerReveals();
+}
+
+// ── SIDEBAR NAV BUTTONS ──
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => navigate(btn.dataset.page));
+});
+
+// ── PUBLICATION FILTER ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.pub-item').forEach(item => {
+      item.style.display =
+        (filter === 'all' || item.dataset.type === filter) ? 'grid' : 'none';
+    });
+  });
+});
+
+// ── REVEAL ON SCROLL ──
+function triggerReveals() {
+  const reveals = document.querySelectorAll('.page.active .reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('v');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+
+  // Immediately reveal above-fold elements
+  setTimeout(() => {
+    reveals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('v');
+    });
+  }, 80);
+}
+
+// ── MOBILE SIDEBAR TOGGLE ──
+// Inject hamburger on small screens
+function initMobileNav() {
+  if (window.innerWidth <= 700) {
+    if (!document.getElementById('hamburger')) {
+      const btn = document.createElement('button');
+      btn.id = 'hamburger';
+      btn.innerHTML = '☰';
+      btn.style.cssText = `
+        position:fixed; top:1rem; left:1rem; z-index:200;
+        font-size:1.2rem; background:var(--ink); color:var(--vellum);
+        border:none; padding:0.3em 0.5em; cursor:pointer;
+        font-family:'Source Code Pro',monospace;
+      `;
+      btn.addEventListener('click', () => {
+        document.querySelector('.sidebar').classList.toggle('open');
+      });
+      document.body.appendChild(btn);
+    }
+  }
+}
+
+window.addEventListener('resize', initMobileNav);
+initMobileNav();
+
+// ── INIT ──
+triggerReveals();
+
+</script>
+</body>
+</html>

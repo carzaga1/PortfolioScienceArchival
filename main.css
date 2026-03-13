@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════
-   OULIPO PORTFOLIO — main.css
+   Carlos Arzaga — main.css
    Science & Technology · Archival & Scholarly
-   Full-width · Homemade Apple · Sprint 1
+   Full-width · Homemade Apple · Sprint 2
 ═══════════════════════════════════════════════════ */
 
 /* ── TOKENS ── */
@@ -138,26 +138,7 @@ body {
 
 .nav-item.active .nav-glyph { opacity: 1; }
 
-/* ── SIDEBAR STAMP ── */
-.sidebar-foot {
-  padding: 1.5rem 1.8rem 0;
-  border-top: 1px solid rgba(240,233,214,0.05);
-  margin-top: 1rem;
-}
-
-.sidebar-stamp {
-  display: block;
-  font-family: var(--f-code);
-  font-size: 0.45rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(29,58,138,0.35);
-  line-height: 2;
-  border: 1px solid rgba(29,58,138,0.2);
-  padding: 0.5rem 0.75rem;
-  width: fit-content;
-  transform: rotate(-2deg);
-}
+/* sidebar-stamp removed */
 
 /* ══════════════════════════════════════════
    MAIN CONTENT AREA
@@ -379,6 +360,7 @@ mark {
   transition: transform 0.15s, box-shadow 0.15s;
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .home-card::before {
@@ -401,10 +383,13 @@ mark {
 
 .hc-num {
   font-family: var(--f-code);
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
   color: var(--cobalt);
-  margin-bottom: 0.5rem;
+  opacity: 0.35;
+  margin-bottom: 0.6rem;
+  line-height: 1;
 }
 
 .hc-title {
@@ -635,6 +620,7 @@ mark {
   position: relative;
   overflow: hidden;
   transition: transform 0.15s, box-shadow 0.15s;
+  border-radius: 8px;
 }
 
 .proj-card::before {
@@ -672,10 +658,13 @@ mark {
 
 .proj-num {
   font-family: var(--f-code);
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
   color: var(--cobalt);
+  opacity: 0.35;
   margin-bottom: 0.4rem;
+  line-height: 1;
 }
 
 .proj-title {
@@ -874,6 +863,7 @@ mark {
   padding: 2rem;
   background: var(--vellum-dark);
   position: relative;
+  border-radius: 8px;
 }
 
 .reply-slip::before {

@@ -34,18 +34,59 @@ PortfolioScienceArchival/
 
 ## Versioning Strategy
 
-Sprint milestones are tracked using **git tags**, not file copies.
+Sprint milestones are tracked as **annotated git tags** using semantic pre-release versioning:
+`v0.{sprint}.0-pre`
+
+| Sprint | Tag              | GitHub Release |
+|--------|------------------|----------------|
+| 1      | `v0.1.0-pre`     | Pre-release    |
+| 2      | `v0.2.0-pre`     | Pre-release    |
+| 3      | `v0.3.0-pre`     | Pre-release    |
+| 4      | `v0.4.0-pre`     | Pre-release    |
+
+The `1.0.0` stable release is reserved for the first fully production-ready version.
+
+### Tagging commands
 
 ```bash
-# Tag the current state as a sprint milestone
-git tag sprint-4 -m "Sprint 4: top nav, full English, sprint-2 numbering"
-git push origin --tags
+# ── Backfill Sprint 3 (point at the last sprint-3 commit hash) ──
+git tag -a v0.3.0-pre <sprint-3-commit-hash> \
+  -m "v0.3.0-pre: Sprint 3 — P.01 numbering, design refinements"
 
-# View all sprint tags
-git tag -l "sprint-*"
+# ── Tag Sprint 4 (current HEAD) ──
+git tag -a v0.4.0-pre HEAD \
+  -m "v0.4.0-pre: Sprint 4 — top nav, full English, 001 numbering"
+
+# ── Push all tags to remote ──
+git push origin --tags
+```
+
+To find the commit hash for sprint 3:
+```bash
+git log --oneline   # find the last commit before sprint-4 work began
+```
+
+### Creating GitHub Pre-releases
+
+After pushing tags, go to **GitHub → Releases → Draft a new release**:
+1. Choose the tag (e.g. `v0.3.0-pre`)
+2. Set the title: `Sprint 3 — v0.3.0-pre`
+3. Check **"Set as a pre-release"**
+4. Publish
+
+Repeat for each sprint tag.
+
+### Reference commands
+
+```bash
+# List all pre-release tags
+git tag -l "v0.*-pre"
 
 # Check out a previous sprint for reference
-git checkout sprint-3
+git checkout v0.3.0-pre
+
+# Return to latest
+git checkout main
 ```
 
 The `archive/` directory contains static HTML snapshots for quick visual reference without switching branches.
@@ -94,12 +135,12 @@ Vercel auto-detects `vercel.json` and deploys as static.
 
 ## Sprint History
 
-| Tag       | Description                                                        |
-|-----------|--------------------------------------------------------------------|
-| sprint-1  | Initial static prototype — sidebar nav, OULIPO constraint design   |
-| sprint-2  | Full-width layout, project numbering 001–006, full content         |
-| sprint-3  | Revised project numbering (P.01 format), design refinements        |
-| sprint-4  | Top nav (sidebar removed), full English, reverted to 001 numbering |
+| Tag          | Description                                                        |
+|--------------|--------------------------------------------------------------------|
+| `v0.1.0-pre` | Initial static prototype — sidebar nav, OULIPO constraint design   |
+| `v0.2.0-pre` | Full-width layout, project numbering 001–006, full content         |
+| `v0.3.0-pre` | Revised project numbering (P.01 format), design refinements        |
+| `v0.4.0-pre` | Top nav (sidebar removed), full English, reverted to 001 numbering |
 
 ---
 

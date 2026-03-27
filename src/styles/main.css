@@ -340,13 +340,10 @@ mark {
 
 .hc-num {
   font-family: var(--f-code);
-  font-size: 1.6rem;
-  font-weight: 300;
-  letter-spacing: 0.08em;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
   color: var(--cobalt);
-  opacity: 0.35;
-  margin-bottom: 0.6rem;
-  line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
 .hc-title {

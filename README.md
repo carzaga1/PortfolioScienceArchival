@@ -1,6 +1,6 @@
 # PortfolioScienceArchival
 **Science & Technology · Archival & Scholarly**
-*Brutalist-archival web presence. Sprint 1 — static prototype.*
+*Brutalist-archival web presence. Current: Sprint 4.*
 
 ---
 
@@ -15,15 +15,41 @@
 
 ```
 PortfolioScienceArchival/
-├── index.html              ← Single-page app entry
+├── index.html              ← Single-page app entry (live version)
 ├── vercel.json             ← Vercel deploy config
 ├── README.md
+├── archive/                ← Sprint snapshots (do not deploy)
+│   ├── portfolio-science-archival.html
+│   ├── portfolio-sprint1.html
+│   ├── portfolio-sprint2.html
+│   └── portfolio-sprint3.html
 └── src/
     ├── styles/
     │   └── main.css        ← All styles + design tokens
     └── components/
         └── main.js         ← Navigation, filters, reveal animations
 ```
+
+---
+
+## Versioning Strategy
+
+Sprint milestones are tracked using **git tags**, not file copies.
+
+```bash
+# Tag the current state as a sprint milestone
+git tag sprint-4 -m "Sprint 4: top nav, full English, sprint-2 numbering"
+git push origin --tags
+
+# View all sprint tags
+git tag -l "sprint-*"
+
+# Check out a previous sprint for reference
+git checkout sprint-3
+```
+
+The `archive/` directory contains static HTML snapshots for quick visual reference without switching branches.
+These files are not linked or deployed — they are reference artifacts only.
 
 ---
 
@@ -48,15 +74,9 @@ python3 -m http.server 3000
 ### Step 1 — Push to GitHub
 
 ```bash
-# In your terminal, from this folder:
-git init
 git add .
-git commit -m "feat: initial portfolio — oulipo method sprint 1"
-
-# Create a new repo on github.com/carzaga1/PortfolioScienceArchival, then:
-git remote add origin https://github.com/carzaga1/PortfolioScienceArchival.git
-git branch -M main
-git push -u origin main
+git commit -m "feat: sprint 4 — top nav, translations, sprint-2 numbering"
+git push origin main
 ```
 
 ### Step 2 — Connect to Vercel
@@ -68,25 +88,22 @@ git push -u origin main
 5. Root directory: `./` (leave as default)
 6. Click **Deploy**
 
-Vercel auto-detects `vercel.json` and deploys as static. Your site is live at:
-`https://PortfolioScienceArchival.vercel.app` (or your custom domain)
+Vercel auto-detects `vercel.json` and deploys as static.
 
-### Step 3 — Custom Domain (optional)
+---
 
-In Vercel dashboard → Project → Settings → Domains → Add your domain.
+## Sprint History
+
+| Tag       | Description                                                        |
+|-----------|--------------------------------------------------------------------|
+| sprint-1  | Initial static prototype — sidebar nav, OULIPO constraint design   |
+| sprint-2  | Full-width layout, project numbering 001–006, full content         |
+| sprint-3  | Revised project numbering (P.01 format), design refinements        |
+| sprint-4  | Top nav (sidebar removed), full English, reverted to 001 numbering |
 
 ---
 
 ## Customisation
-
-### Replace placeholder content
-All content lives in `index.html`. Search for:
-- `Your Name` → your full name
-- `your@email.ch` → your email
-- `[Your Discipline]` → your field
-- `[Your Institution]` → your affiliation
-- `10.xxxx/` → real DOIs
-- `arXiv:2026.xxxxx` → real arXiv IDs
 
 ### Design tokens
 All visual variables are in `src/styles/main.css` under `:root {}`.
@@ -95,15 +112,6 @@ Change `--cobalt` to shift the entire accent colour system.
 ### Add a publication
 Copy a `<article class="pub-item" data-type="journal">` block in `index.html`
 and update the content. The filter system works automatically.
-
----
-
-## Sprint 2 (Next Phase)
-- [ ] Migrate to Next.js 14 + MDX (content editable without touching HTML)
-- [ ] Add dark mode toggle
-- [ ] Add search across publications
-- [ ] RSS feed for new publications
-- [ ] PDF export polish via CSS @print
 
 ---
 

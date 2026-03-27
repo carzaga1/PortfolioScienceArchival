@@ -18,7 +18,7 @@ function navigate(pageId) {
   triggerReveals();
 }
 
-// ── SIDEBAR NAV BUTTONS ──
+// ── TOP NAV BUTTONS ──
 document.querySelectorAll('.nav-item').forEach(btn => {
   btn.addEventListener('click', () => navigate(btn.dataset.page));
 });
@@ -48,7 +48,6 @@ function triggerReveals() {
 
   reveals.forEach(el => io.observe(el));
 
-  // Immediately reveal above-fold elements
   setTimeout(() => {
     reveals.forEach(el => {
       const r = el.getBoundingClientRect();
@@ -56,31 +55,6 @@ function triggerReveals() {
     });
   }, 80);
 }
-
-// ── MOBILE SIDEBAR TOGGLE ──
-// Inject hamburger on small screens
-function initMobileNav() {
-  if (window.innerWidth <= 700) {
-    if (!document.getElementById('hamburger')) {
-      const btn = document.createElement('button');
-      btn.id = 'hamburger';
-      btn.innerHTML = '☰';
-      btn.style.cssText = `
-        position:fixed; top:1rem; left:1rem; z-index:200;
-        font-size:1.2rem; background:var(--ink); color:var(--vellum);
-        border:none; padding:0.3em 0.5em; cursor:pointer;
-        font-family:'Source Code Pro',monospace;
-      `;
-      btn.addEventListener('click', () => {
-        document.querySelector('.sidebar').classList.toggle('open');
-      });
-      document.body.appendChild(btn);
-    }
-  }
-}
-
-window.addEventListener('resize', initMobileNav);
-initMobileNav();
 
 // ── INIT ──
 triggerReveals();

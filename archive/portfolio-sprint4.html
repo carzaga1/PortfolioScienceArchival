@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Carlos Arzaga — Data Scientist, Researcher & Clinical Neurophysiologist. EEG · Machine Learning · Pediatric Neurocritical Care. Zürich, Switzerland."/>
+<title>Carlos Arzaga — Research Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../src/styles/main.css"/>
+</head>
+<body>
+
+  <!-- ══ TOP NAV ══ -->
+  <nav class="topnav">
+    <div class="topnav-brand">C. Arzaga</div>
+    <div class="topnav-links">
+      <button class="nav-item active" data-page="home">Home</button>
+      <button class="nav-item" data-page="research">Research</button>
+      <button class="nav-item" data-page="projects">Projects</button>
+      <button class="nav-item" data-page="cv">CV / About</button>
+      <button class="nav-item" data-page="contact">Contact</button>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="main">
+
+    <!-- ════════════════════
+         HOME / COVER LETTER
+    ════════════════════ -->
+    <section class="page active" id="page-home">
+      <div class="page-inner">
+        <span class="page-num">0 0 1</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Carlos Arzaga</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Data Scientist · Researcher · Clinical Neurophysiologist</div>
+          </div>
+          <div class="lh-right">
+            <strong>Research Portfolio</strong>
+            Zürich, Switzerland<br>
+            github.com/carzaga1
+          </div>
+        </header>
+
+        <div class="salut-row">
+          <span class="hand">To whom it may concern,</span>
+        </div>
+
+        <p class="body-text">
+          Dear colleagues, collaborators, and curious minds — welcome to a
+          professional presence built at <mark>the intersection of clinical
+          neuroscience and machine learning</mark>. Not a brochure. A living
+          record: of EEG signals decoded, algorithms evaluated, and knowledge
+          contributed at the frontier of pediatric neurocritical care.
+        </p>
+
+        <p class="body-text">
+          Dynamic Data Scientist with deep domain expertise as a Clinical
+          Neurophysiologist at the University Children's Hospital Zürich (KISPI).
+          Passionate about <span class="hl-subtle">Healthcare Foundation Models ·
+          XAI · Generalizability · Clinical Biomarkers · Precision Medicine.</span>
+        </p>
+
+        <hr class="dashed-rule"/>
+
+        <div class="section-label">§ What you will find here</div>
+
+        <div class="home-grid">
+          <div class="home-card" onclick="navigate('research')">
+            <div class="hc-num">001</div>
+            <div class="hc-title">Research &amp; Publications</div>
+            <div class="hc-body">Peer-reviewed publications and conference abstracts in EEG analysis, burst suppression detection, and unsupervised deep learning for clinical neurophysiology.</div>
+            <div class="hc-arrow">→ View Archive</div>
+          </div>
+          <div class="home-card" onclick="navigate('projects')">
+            <div class="hc-num">002</div>
+            <div class="hc-title">Projects &amp; Case Studies</div>
+            <div class="hc-body">From M.Sc. thesis ML pipelines to EEG annotation infrastructure and real-time neuromonitoring systems. Method, stack, outcome, and status documented.</div>
+            <div class="hc-arrow">→ View Projects</div>
+          </div>
+          <div class="home-card" onclick="navigate('cv')">
+            <div class="hc-num">003</div>
+            <div class="hc-title">Curriculum Vitæ</div>
+            <div class="hc-body">Clinical, research, and technical experience across KISPI, USZ, and UT Dallas. Education, certifications, and language proficiency — typeset as a living document.</div>
+            <div class="hc-arrow">→ View CV</div>
+          </div>
+          <div class="home-card" onclick="navigate('contact')">
+            <div class="hc-num">004</div>
+            <div class="hc-title">Contact &amp; Colophon</div>
+            <div class="hc-body">Open to research collaborations, clinical informatics projects, and interdisciplinary inquiries at the intersection of neuroscience and data science.</div>
+            <div class="hc-arrow">→ Get in Touch</div>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <!-- DECISION TREE -->
+        <div class="dt-section">
+          <div class="dt-wrap">
+            <span class="hand dt-root">The signal persists.</span>
+            <div class="dt-branches">
+              <div class="dt-b"><mark>is analyzed</mark> — signal by signal, patient by patient</div>
+              <div class="dt-b"><mark>is generalized</mark> — validated across heterogeneous and unseen data</div>
+              <div class="dt-b"><mark>is documented</mark> — peer-reviewed, open, attributed</div>
+              <div class="dt-b dead">not arriving — is not an option</div>
+            </div>
+          </div>
+          <div class="dt-foot">at the portfolio meeting · III · 2026</div>
+        </div>
+
+        <!-- SIGN BLOCK -->
+        <div class="sign-block">
+          <div class="sign-left">
+            At the time of launch,<br>
+            with full <span class="hl-subtle">archival</span> rigor —
+          </div>
+          <div class="sign-right">
+            <div class="hand sign-name">Carlos Arzaga</div>
+            <div class="sign-title">Data Scientist · KISPI · Zürich</div>
+          </div>
+        </div>
+
+        <!-- STAMP -->
+        <div class="stamp" aria-hidden="true">
+          <div class="stamp-inner">EEG<br>ML<br>KISPI<br>2026</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         RESEARCH
+    ════════════════════ -->
+    <section class="page" id="page-research">
+      <div class="page-inner">
+        <span class="page-num">0 0 2</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Research Archive</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Publications · Conference Abstracts · Posters</div>
+          </div>
+          <div class="lh-right">
+            <strong>Archival Record</strong>
+            Updated March 2026
+          </div>
+        </header>
+
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="journal">Journal</button>
+          <button class="filter-btn" data-filter="conference">Conference</button>
+          <button class="filter-btn" data-filter="thesis">Thesis</button>
+        </div>
+
+        <div class="pub-list" id="pub-list">
+
+          <article class="pub-item" data-type="journal">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability</h2>
+              <div class="pub-meta">
+                Arzaga, C., Staubli, O., Birbaumer, M., Ramantani, G., &amp; Keller, E.<br>
+                <em>Clinical and Translational Neuroscience</em> · Vol. 9, No. 4, Article 45 [Abstract P136]<br>
+                DOI: <a href="https://doi.org/10.3390/ctn9040045" target="_blank" style="color:var(--cobalt);">10.3390/ctn9040045</a>
+                · 6th Swiss Congress of Clinical Neurophysiology, 2025
+              </div>
+              <p class="pub-abstract">
+                Assessed the generalizability of a pre-validated unsupervised algorithm (BSUPP) for Burst Suppression
+                pattern (BSP) detection on pediatric continuous EEG data (~12 hours, 4 PICU patients, University
+                Children's Hospital Zürich). Developed a novel ensemble architecture combining BSUPP with a denoising
+                Variational Autoencoder (dVAE), improving AUROC from 0.41 to 0.53 — a 30% increase — with perfect
+                recall of 1.00 for burst detection on single-patient inference.
+              </p>
+              <div class="pub-tags">
+                <span class="tag">Journal Abstract</span>
+                <span class="tag green">Peer-Reviewed</span>
+                <span class="tag">EEG</span>
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Pediatric Neurocritical Care</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="conference">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability [Poster P136]</h2>
+              <div class="pub-meta">
+                Arzaga, C., Staubli, O., Birbaumer, M., Ramantani, G., &amp; Keller, E.<br>
+                <em>6th Swiss Congress of Clinical Neurophysiology</em><br>
+                Affiliations: University Children's Hospital Zürich (KISPI) · HSLU · University Hospital Zürich (USZ)
+              </div>
+              <p class="pub-abstract">
+                Poster presentation evaluating a dVAE+BSUPP ensemble architecture for automated BSP detection. Phase I
+                tested the BSUPP surrogate model on ~12 hours of unseen pediatric cEEG data (4 PICU patients, status
+                epilepticus), revealing limited direct generalizability (mean AUROC = 0.41). Phase II developed the
+                novel ensemble through extensive hyperparameter experiments, achieving AUROC = 0.53 — a 30%
+                improvement — with perfect burst recall of 1.00 on single-patient inference. Highlights unsupervised
+                deep learning's potential for real-time automated BSP detection in clinical contexts.
+              </p>
+              <div class="pub-tags">
+                <span class="tag">Conference Poster</span>
+                <span class="tag green">Presented</span>
+                <span class="tag">dVAE</span>
+                <span class="tag">Burst Suppression</span>
+                <span class="tag">Generalizability</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub-item" data-type="thesis">
+            <div class="pub-year">2025</div>
+            <div class="pub-content">
+              <h2 class="pub-title">An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability</h2>
+              <div class="pub-meta">
+                Arzaga, C.<br>
+                <em>M.Sc. Thesis — Applied Information and Data Science</em><br>
+                HSLU – Lucerne University of Applied Sciences and Arts · Feb 2023 – Sep 2025
+              </div>
+              <p class="pub-abstract">
+                Master's thesis investigating the generalizability of unsupervised ML algorithms for burst suppression
+                pattern detection in pediatric cEEG data. Conducted in collaboration with the ICU Cockpit Research Group
+                at USZ. Built a Label Studio annotation pipeline, curated and pre-processed EEG signals from 4 PICU
+                patients with status epilepticus, and developed the dVAE+BSUPP ensemble architecture through
+                hyperparameter optimisation experiments. Addresses the critical gap that fewer than 1% of 10,462
+                healthcare ML algorithms reported external validation.
+              </p>
+              <div class="pub-tags">
+                <span class="tag red">M.Sc. Thesis</span>
+                <span class="tag">HSLU</span>
+                <span class="tag">Unsupervised ML</span>
+                <span class="tag">EEG Signal Processing</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <hr class="dashed-rule"/>
+        <div class="section-label">§ Research Interests</div>
+        <p class="body-text" style="font-size:0.82rem;">
+          Healthcare Foundation Models &nbsp;·&nbsp; Explainable AI (XAI) &nbsp;·&nbsp;
+          Generalizability of Clinical ML Models &nbsp;·&nbsp;
+          EEG Biomarkers &nbsp;·&nbsp; Precision Medicine &nbsp;·&nbsp;
+          Neurocritical Care Informatics &nbsp;·&nbsp; Pediatric Epilepsy
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         PROJECTS
+    ════════════════════ -->
+    <section class="page" id="page-projects">
+      <div class="page-inner">
+        <span class="page-num">0 0 3</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Index</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Applied Work · Tools · Case Studies</div>
+          </div>
+          <div class="lh-right">
+            <strong>Case Studies</strong>
+            Method · Stack · Outcome
+          </div>
+        </header>
+
+        <p class="body-text">
+          Applied research outputs, clinical data infrastructure, and ML systems.
+          Each project is a <mark>documented artefact</mark> — method, stack,
+          outcome, and status recorded with archival precision.
+        </p>
+
+        <div class="proj-grid">
+
+          <article class="proj-card">
+            <span class="proj-status active">Completed</span>
+            <div class="proj-num">001</div>
+            <h2 class="proj-title">dVAE+BSUPP Ensemble — M.Sc. Thesis</h2>
+            <p class="proj-body">Novel unsupervised deep learning ensemble combining a denoising Variational Autoencoder with the BSUPP algorithm for burst suppression detection in pediatric cEEG. Achieved 30% AUROC improvement with perfect burst recall. KISPI · HSLU · USZ.</p>
+            <div class="proj-stack">
+              <span class="tech">PyTorch</span>
+              <span class="tech">Python</span>
+              <span class="tech">EEG</span>
+              <span class="tech">dVAE</span>
+              <span class="tech">W&amp;B</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">002</div>
+            <h2 class="proj-title">EEG Annotation Pipeline — ICU Cockpit</h2>
+            <p class="proj-body">Built a new end-to-end EEG data annotation pipeline using Label Studio for the ICU Cockpit Research Group at USZ. Curated and pre-processed continuous EEG signals from neurocritical patients; evaluated performance of multiple burst-suppression detection models.</p>
+            <div class="proj-stack">
+              <span class="tech">Label Studio</span>
+              <span class="tech">Python</span>
+              <span class="tech">scikit-learn</span>
+              <span class="tech">Docker</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">003</div>
+            <h2 class="proj-title">EEG + fNIRS Neurocritical Monitoring</h2>
+            <p class="proj-body">Executed EEG and fNIRS studies on neurocritical patients at USZ. Supported PI research on neurocritical biomarkers, managed all resulting data, and developed study design for integrating commercial EEG/NIRS systems via systematic literature review.</p>
+            <div class="proj-stack">
+              <span class="tech">EEG</span>
+              <span class="tech">fNIRS</span>
+              <span class="tech">REDCap</span>
+              <span class="tech">Python</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">004</div>
+            <h2 class="proj-title">Intraoperative Neurophysiology Monitoring</h2>
+            <p class="proj-body">Analysed real-time EEG and single-cell data for DBS implantation (Parkinson's/Epilepsy) at USZ. Previously executed comprehensive IOM strategies in the US — SSEPs, AEPs, VEPs — and developed training protocols for new neurophysiology staff at Monitoring Concepts.</p>
+            <div class="proj-stack">
+              <span class="tech">EEG</span>
+              <span class="tech">SSEPs</span>
+              <span class="tech">DBS</span>
+              <span class="tech">IOM</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status ongoing">Ongoing</span>
+            <div class="proj-num">005</div>
+            <h2 class="proj-title">Research Identity System — This Portfolio</h2>
+            <p class="proj-body">A brutalist-archival web portfolio for documenting scientific identity, publications, and projects. OULIPO constraint-driven design applied to professional presence. Built in the browser, deployed via GitHub + Vercel.</p>
+            <div class="proj-stack">
+              <span class="tech">HTML</span>
+              <span class="tech">CSS</span>
+              <span class="tech">JS</span>
+              <span class="tech">GitHub</span>
+              <span class="tech">Vercel</span>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <span class="proj-status archived">Archived</span>
+            <div class="proj-num">006</div>
+            <h2 class="proj-title">Memory Biomarkers — Aging &amp; Memory Lab</h2>
+            <p class="proj-body">Research assistant at UT Dallas Aging and Memory Research Laboratory. Executed electrophysiology and genetics protocols to identify memory biomarkers in rodent tissue. Managed tissue histology, blood collection, and data for doctoral student thesis.</p>
+            <div class="proj-stack">
+              <span class="tech">Electrophysiology</span>
+              <span class="tech">Histology</span>
+              <span class="tech">Genetics</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CV
+    ════════════════════ -->
+    <section class="page" id="page-cv">
+      <div class="page-inner">
+        <span class="page-num">0 0 4</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Curriculum Vitæ</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Living Document · Updated March 2026</div>
+          </div>
+          <div class="lh-right">
+            <strong>Data Scientist · Researcher</strong>
+            Zürich, Switzerland
+          </div>
+        </header>
+
+        <div class="cv-header">
+          <div>
+            <h1 class="cv-name">Carlos Arzaga</h1>
+            <div class="cv-role">Data Scientist · Researcher · Clinical Neurophysiologist</div>
+            <p class="cv-bio">Dynamic Data Scientist and researcher with deep domain expertise as a Clinical Neurophysiologist. Adept at utilising machine learning algorithms to analyse complex biomedical data, driving actionable insights, and impactful research. Passionate about advancing healthcare technologies through innovative solutions and interdisciplinary collaboration.</p>
+          </div>
+          <div class="cv-contacts">
+            <a href="mailto:carlos.arzaga@kispi.uzh.ch">carlos.arzaga@kispi.uzh.ch</a>
+            <a href="tel:+41768052521">+41 76 805 25 21</a>
+            <a href="https://github.com/carzaga1" target="_blank">github.com/carzaga1</a>
+            <a href="https://doi.org/10.3390/ctn9040045" target="_blank">DOI · Publication</a>
+          </div>
+        </div>
+
+        <hr class="dashed-rule"/>
+
+        <div class="cv-section">
+          <div class="section-label">§ Education</div>
+          <div class="cv-entry">
+            <div class="cv-date">Feb 2023 — Sep 2025</div>
+            <div>
+              <div class="cv-entry-title">M.Sc. Applied Information and Data Science</div>
+              <div class="cv-entry-inst">HSLU – Lucerne University of Applied Sciences and Arts · Lucerne, Switzerland</div>
+              <div class="cv-entry-desc">Thesis: "An Unsupervised Deep Learning Algorithm for Burst Suppression Detection in Pediatric EEG Data: Assessing Generalizability." Conducted in collaboration with the ICU Cockpit Research Group, University Hospital Zürich.</div>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2016 — May 2018</div>
+            <div>
+              <div class="cv-entry-title">B.Sc. Neuroscience</div>
+              <div class="cv-entry-inst">University of Texas at Dallas · Dallas, TX, USA</div>
+              <div class="cv-entry-desc">Undergraduate research in electrophysiology and memory biomarkers at the Aging and Memory Research Laboratory.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Experience</div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Feb 2024 — Present</div>
+            <div>
+              <div class="cv-entry-title">Neurophysiology Specialist — Neurology | EEG/Epilepsy</div>
+              <div class="cv-entry-inst">University Children's Hospital Zürich (KISPI) · Zürich, Switzerland</div>
+              <div class="cv-entry-desc">Performed, analysed, and assisted in diagnosis of outpatient, inpatient, and long-term (Telemetry) EEGs. Performed evoked potentials (SSEPs, AEPs, VEPs). Served as clinical annotator for EEGs supporting ongoing epilepsy research studies. Assisted as educating preceptor to new rotating medical residents.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2023 — Jan 2024</div>
+            <div>
+              <div class="cv-entry-title">Visiting Graduate Researcher — ICU Cockpit Research Group</div>
+              <div class="cv-entry-inst">University Hospital Zürich (USZ) · Zürich, Switzerland</div>
+              <div class="cv-entry-desc">Project: Evaluation of Burst-Suppression Detection Models. Evaluated ML models for automatic burst-suppression detection in EEG signals. Built a new data annotation pipeline using Label Studio. Curated and pre-processed EEG signals; evaluated performance of several detection models.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Nov 2020 — Jan 2024</div>
+            <div>
+              <div class="cv-entry-title">Neurophysiology Specialist — Neurology | EEG/Epilepsy</div>
+              <div class="cv-entry-inst">University Hospital Zürich (USZ) · Zürich, Switzerland</div>
+              <div class="cv-entry-desc">Analysed real-time EEG/single-cell data for DBS implantation (Parkinson's/Epilepsy). Supported PI research on neurocritical biomarkers using EEG and fNIRS systems. Executed EEG + fNIRS studies on neurocritical patients. Developed study design for integrating commercial EEG/NIRS systems via literature review.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2018 — Sep 2020</div>
+            <div>
+              <div class="cv-entry-title">Surgical Neurophysiologist</div>
+              <div class="cv-entry-inst">Monitoring Concepts (US IOM) · Dallas, TX, USA</div>
+              <div class="cv-entry-desc">Analysed neurodiagnostic tests to maintain nervous system integrity during surgery. Executed comprehensive intraoperative monitoring strategies with surgical/anaesthesia teams. Developed training protocols and served as educational preceptor to new staff.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Aug 2017 — Dec 2018</div>
+            <div>
+              <div class="cv-entry-title">Research Assistant — Aging and Memory Research Laboratory</div>
+              <div class="cv-entry-inst">University of Texas at Dallas · Dallas, TX, USA</div>
+              <div class="cv-entry-desc">Executed electrophysiology/genetics to find memory biomarkers in rodent tissue. Managed tissue histology, blood collection, and data for doctoral student thesis. Managed housing and care for an aging rat colony, ensuring research protocols.</div>
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-date">Apr 2015 — Aug 2018</div>
+            <div>
+              <div class="cv-entry-title">Anesthesia Technician — Anesthesiology | Surgery</div>
+              <div class="cv-entry-inst">Baylor Scott &amp; White Medical Center · Plano, TX, USA</div>
+              <div class="cv-entry-desc">Provided critical support to anesthesiologists for surgical procedures and emergencies, including invasive monitor insertion (CVC/arterial) and difficult airway management. Prepared, calibrated, and troubleshot anesthesia delivery systems. Operated Cell Saver equipment.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Technical Skills</div>
+          <div class="skills-grid">
+            <div class="skill-group">
+              <div class="skill-group-title">Programming &amp; DevOps</div>
+              <div class="skill-items">Python · R · HTML<br>Git · Bash · GitLab<br>GitHub · Docker · MLOps</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">AI &amp; Machine Learning</div>
+              <div class="skill-items">PyTorch · TensorFlow<br>Keras · scikit-learn<br>Weights &amp; Biases<br>Time Series Analysis</div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Databases &amp; BI</div>
+              <div class="skill-items">MySQL · MongoDB<br>REDCap<br>Tableau · Power BI</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Certifications</div>
+          <div class="cv-entry">
+            <div class="cv-date">Active</div>
+            <div>
+              <div class="cv-entry-desc">
+                Deep Tech Talent Certificate (EIT) &nbsp;·&nbsp;
+                Board Certified in Intraoperative Neurophysiological Monitoring (ABRET) &nbsp;·&nbsp;
+                Good Clinical Practice Modules 1 &amp; 2 (USZ) &nbsp;·&nbsp;
+                Basic Life Support (KISPI)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Languages</div>
+          <div class="cv-entry">
+            <div class="cv-date"></div>
+            <div>
+              <div class="cv-entry-desc">
+                English (Native / bilingual) &nbsp;·&nbsp;
+                Spanish (Native / bilingual) &nbsp;·&nbsp;
+                German (Professional working proficiency)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <div class="section-label">§ Personal Interests</div>
+          <div class="cv-entry">
+            <div class="cv-date"></div>
+            <div>
+              <div class="cv-entry-desc">
+                Traveling &nbsp;·&nbsp; Analog Film Photography &nbsp;·&nbsp;
+                Baking &nbsp;·&nbsp; Run Clubs &nbsp;·&nbsp;
+                Basketball &nbsp;·&nbsp; Gravel Cycling
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-print-btn-row">
+          <button class="print-btn" onclick="window.print()">↓ Export as PDF</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════
+         CONTACT
+    ════════════════════ -->
+    <section class="page" id="page-contact">
+      <div class="page-inner">
+        <span class="page-num">0 0 5</span>
+
+        <header class="letterhead">
+          <div class="lh-left">
+            <div class="lh-brand">Contact</div>
+            <div class="lh-rule"></div>
+            <div class="lh-sub">Reply Slip · Colophon · Method</div>
+          </div>
+          <div class="lh-right">
+            <strong>Open to</strong>
+            Research Collaborations<br>
+            Clinical Informatics · Consulting
+          </div>
+        </header>
+
+        <div class="contact-grid">
+
+          <div class="reply-slip">
+            <h2 class="reply-title">Send a message</h2>
+            <div class="form-field">
+              <label>Name</label>
+              <input type="text" placeholder="Your name"/>
+            </div>
+            <div class="form-field">
+              <label>Institution / Affiliation</label>
+              <input type="text" placeholder="Where you're writing from"/>
+            </div>
+            <div class="form-field">
+              <label>Subject</label>
+              <input type="text" placeholder="Collaboration / Inquiry / Other"/>
+            </div>
+            <div class="form-field">
+              <label>Message</label>
+              <textarea placeholder="Your research inquiry, collaboration idea, or question…"></textarea>
+            </div>
+            <button class="submit-btn">Send Reply →</button>
+          </div>
+
+          <div class="colophon">
+            <div class="colophon-section">
+              <div class="section-label">§ Direct Contact</div>
+              <p class="body-text" style="font-size:0.78rem; line-height:2;">
+                <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Email</span><br>
+                carlos.arzaga@kispi.uzh.ch<br>
+                <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Phone</span><br>
+                +41 76 805 25 21<br>
+                <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Location</span><br>
+                Zürich, Switzerland
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Connect</div>
+              <div class="social-row">
+                <a class="social-link" href="https://github.com/carzaga1" target="_blank">GitHub</a>
+                <a class="social-link" href="https://doi.org/10.3390/ctn9040045" target="_blank">Publication</a>
+                <a class="social-link" href="mailto:carlos.arzaga@kispi.uzh.ch">Email</a>
+                <a class="social-link" href="https://www.kispi.uzh.ch" target="_blank">KISPI</a>
+              </div>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Colophon</div>
+              <p class="body-text" style="font-size:0.76rem;">
+                Typeset in <em>Libre Baskerville</em> (display),
+                <em>Courier Prime</em> (body), <em>Source Code Pro</em> (labels),
+                and <em>Homemade Apple</em> (voice). Designed constraint-first —
+                in the OULIPO tradition. Built in the browser. Deployed via
+                <a href="https://github.com/carzaga1/PortfolioScienceArchival" target="_blank" style="color:var(--cobalt);">GitHub · Vercel</a>.
+              </p>
+            </div>
+            <div class="colophon-section">
+              <div class="section-label">§ Philosophy</div>
+              <p class="body-text" style="font-size:0.75rem; font-style:italic;">
+                "The constraint is not a limitation — it is the structure
+                that makes the work legible." Archival clarity over decorative noise.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="dashed-rule"/>
+        <p style="text-align:center; font-family:'Courier Prime',monospace; font-size:0.75rem; opacity:0.45; font-style:italic;">
+          At the time of launch — with full archival rigor —
+          <span class="hand" style="font-size:1.2rem; vertical-align:middle; margin-left:0.5rem;">Carlos Arzaga</span>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../src/components/main.js"></script>
+</body>
+</html>

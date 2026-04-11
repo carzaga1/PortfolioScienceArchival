@@ -71,25 +71,25 @@
         <div class="section-label">§ What you will find here</div>
 
         <div class="home-grid">
-          <div class="home-card">
+          <div class="home-card" onclick="navigate('research')">
             <div class="hc-num">001</div>
             <div class="hc-title">Research &amp; Publications</div>
             <div class="hc-body">Peer-reviewed publications and conference abstracts in EEG analysis, burst suppression detection, and unsupervised deep learning for clinical neurophysiology.</div>
             <div class="hc-arrow">→ View Archive</div>
           </div>
-          <div class="home-card">
+          <div class="home-card" onclick="navigate('projects')">
             <div class="hc-num">002</div>
             <div class="hc-title">Projects &amp; Case Studies</div>
             <div class="hc-body">From M.Sc. thesis ML pipelines to EEG annotation infrastructure and real-time neuromonitoring systems. Method, stack, outcome, and status documented.</div>
             <div class="hc-arrow">→ View Projects</div>
           </div>
-          <div class="home-card">
+          <div class="home-card" onclick="navigate('cv')">
             <div class="hc-num">003</div>
             <div class="hc-title">Curriculum Vitæ</div>
             <div class="hc-body">Clinical, research, and technical experience across KISPI, USZ, and UT Dallas. Education, certifications, and language proficiency — typeset as a living document.</div>
             <div class="hc-arrow">→ View CV</div>
           </div>
-          <div class="home-card">
+          <div class="home-card" onclick="navigate('contact')">
             <div class="hc-num">004</div>
             <div class="hc-title">Contact &amp; Colophon</div>
             <div class="hc-body">Open to research collaborations, clinical informatics projects, and interdisciplinary inquiries at the intersection of neuroscience and data science.</div>
@@ -642,5 +642,6 @@
 
   </main>
 
+  <script src="src/components/main.js"></script>
 </body>
 </html>

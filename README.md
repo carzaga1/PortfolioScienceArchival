@@ -1,6 +1,6 @@
 # PortfolioScienceArchival
 **Science & Technology · Archival & Scholarly**
-*Brutalist-archival web presence. Current: Sprint 4.*
+*Brutalist-archival web presence. Current: Sprint 5.*
 
 ---
 
@@ -23,16 +23,19 @@ PortfolioScienceArchival/
 │   ├── portfolio-sprint1.html
 │   ├── portfolio-sprint2.html
 │   ├── portfolio-sprint3.html
-│   └── portfolio-sprint4.html
+│   ├── portfolio-sprint4.html
+│   └── portfolio-sprint5.html
 └── src/
     ├── styles/
     │   └── main.css        ← All styles + design tokens
-    └── components/
-        └── main.js         ← Navigation, filters, reveal animations
+    ├── components/
+    │   └── main.js         ← Navigation, filters, reveal animations
+    └── assets/
+        ├── oulipo_letter.jpeg          ← Design reference
+        └── Carlos_Arzaga_CV_2026.pdf  ← Downloadable CV
 ```
 
 ---
-
 
 ## Local Development
 
@@ -56,7 +59,7 @@ python3 -m http.server 3000
 
 ```bash
 git add .
-git commit -m "feat: sprint 4 — top nav, translations, sprint-2 numbering"
+git commit -m "your message"
 git push origin main
 ```
 
@@ -75,12 +78,13 @@ Vercel auto-detects `vercel.json` and deploys as static.
 
 ## Sprint History
 
-| Snapshot                      | Description                                                        |
-|-------------------------------|--------------------------------------------------------------------|
-| `archive/portfolio-sprint1.html` | Initial static prototype — sidebar nav, OULIPO constraint design   |
-| `archive/portfolio-sprint2.html` | Full-width layout, project numbering 001–006, full content         |
-| `archive/portfolio-sprint3.html` | Revised project numbering (P.01 format), design refinements        |
-| `archive/portfolio-sprint4.html` | Top nav (sidebar removed), full English, reverted to 001 numbering |
+| Snapshot                         | Description                                                                 |
+|----------------------------------|-----------------------------------------------------------------------------|
+| `archive/portfolio-sprint1.html` | Initial static prototype — sidebar nav, OULIPO constraint design            |
+| `archive/portfolio-sprint2.html` | Full-width layout, project numbering 001–006, full content                  |
+| `archive/portfolio-sprint3.html` | Revised project numbering (P.01 format), design refinements                 |
+| `archive/portfolio-sprint4.html` | Top nav (sidebar removed), full English, reverted to 001 numbering          |
+| `archive/portfolio-sprint5.html` | No topnav · INDEX hover dropdown · ( C A ) brand · OULIPO body-text offset · downloadable CV PDF |
 
 ---
 

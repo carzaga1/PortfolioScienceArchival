@@ -22,6 +22,9 @@
 /* Remove full-width rule below letterhead */
 .letterhead { border-bottom: none; }
 
+/* CV download link styled as button */
+a.print-btn { display: inline-block; text-decoration: none; }
+
 /* Full-width pages — remove max-width cap */
 .page-inner { max-width: none; }
 
@@ -707,7 +710,7 @@
         </div>
 
         <div class="cv-print-btn-row">
-          <button class="print-btn" onclick="window.print()">↓ Export as PDF</button>
+          <a class="print-btn" href="src/assets/Carlos_Arzaga_CV_2026.pdf" download="Carlos_Arzaga_CV_2026.pdf">↓ Export as PDF</a>
         </div>
 
       </div>

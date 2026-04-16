@@ -9,20 +9,163 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/main.css"/>
+
+<style>
+/* ═══════════════════════════════════════════════════
+   Sprint 5 overrides
+   — No topnav · OULIPO offset · INDEX dropdown
+═══════════════════════════════════════════════════ */
+
+/* No topnav — remove the 52px offset */
+.main { padding-top: 0; }
+
+/* Remove full-width rule below letterhead */
+.letterhead { border-bottom: none; }
+
+/* CV download link styled as button */
+a.print-btn { display: inline-block; text-decoration: none; }
+
+/* Full-width pages — remove max-width cap */
+.page-inner { max-width: none; }
+
+/* ── OULIPO body-text layout ──
+   Right-offset: text sits in the right ~70% of the page,
+   mimicking the wide left margin of the archival letter. */
+.body-text {
+  margin-left: 30%;
+  max-width: none;
+}
+
+/* ── INDEX dropdown ── */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-index-trigger {
+  font-family: var(--f-code);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0.1em 0;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.15s;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nav-index-trigger::after {
+  content: '▾';
+  font-size: 0.55rem;
+  opacity: 0.6;
+}
+
+.nav-dropdown:hover .nav-index-trigger {
+  border-bottom-color: var(--ink);
+}
+
+.nav-index-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%; /* flush — no gap so hover never breaks */
+  background: var(--vellum);
+  border: 1px solid var(--ink);
+  min-width: 148px;
+  z-index: 50;
+  padding: 0.35rem 0 0.2rem;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+}
+
+/* Invisible bridge: extends hover area across any sub-pixel gap */
+.nav-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -6px;
+  right: -6px;
+  height: 8px;
+  display: none;
+}
+.nav-dropdown:hover::after { display: block; }
+
+.nav-dropdown:hover .nav-index-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-index-menu button {
+  font-family: var(--f-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.55em 1.1em;
+  color: var(--ink);
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: background 0.1s, color 0.1s;
+}
+
+.nav-index-menu button:last-child { border-bottom: none; }
+
+.nav-index-menu button:hover {
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+}
+
+/* ── lh-brand-group: rule auto-matches brand text width ── */
+.lh-brand-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+.lh-brand-group .lh-rule {
+  width: 100%;
+  height: 2.5px;
+  background: var(--ink);
+  margin: 5px 0 0.75rem;
+}
+
+.lh-sub { margin-bottom: 0.75rem; }
+
+/* ── lh-right: dropdown only ── */
+.lh-right {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ── dt-section without root ── */
+.dt-section-branches {
+  margin: 1rem 0 2.5rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px dashed rgba(0,0,0,0.18);
+}
+
+.dt-section-branches .dt-branches {
+  border-left: 2px solid var(--ink);
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .body-text { margin-left: 15%; }
+}
+
+@media (max-width: 700px) {
+  .body-text { margin-left: 0; }
+  .lh-right { align-items: flex-start; }
+}
+</style>
 </head>
 <body>
-
-  <!-- ══ TOP NAV ══ -->
-  <nav class="topnav">
-    <div class="topnav-brand">C. Arzaga</div>
-    <div class="topnav-links">
-      <button class="nav-item active" data-page="home">Home</button>
-      <button class="nav-item" data-page="research">Research</button>
-      <button class="nav-item" data-page="projects">Projects</button>
-      <button class="nav-item" data-page="cv">CV / About</button>
-      <button class="nav-item" data-page="contact">Contact</button>
-    </div>
-  </nav>
 
   <!-- ══ MAIN CONTENT ══ -->
   <main class="main">
@@ -36,33 +179,38 @@
 
         <header class="letterhead">
           <div class="lh-left">
-            <div class="lh-brand">Carlos Arzaga</div>
-            <div class="lh-rule"></div>
-            <div class="lh-sub">Data Scientist · Researcher · Clinical Neurophysiologist</div>
+            <div class="lh-brand-group">
+              <div class="lh-brand">(CA)</div>
+              <div class="lh-rule"></div>
+            </div>
+
           </div>
           <div class="lh-right">
-            <strong>Research Portfolio</strong>
-            Zürich, Switzerland<br>
-            github.com/carzaga1
+            <div class="nav-dropdown">
+              <span class="nav-index-trigger">INDEX</span>
+              <div class="nav-index-menu">
+                <button onclick="navigate('home')">CASA</button>
+                <button onclick="navigate('projects')">PROJECTS</button>
+                <button onclick="navigate('research')">RESEARCH ARCHIVE</button>
+                <button onclick="navigate('cv')">CV</button>
+                <button onclick="navigate('contact')">CONTACT</button>
+              </div>
+            </div>
           </div>
         </header>
 
-        <div class="salut-row">
-          <span class="hand">To whom it may concern,</span>
-        </div>
-
         <p class="body-text">
           Dear colleagues, collaborators, and curious minds — welcome to a
-          professional presence built at <mark>the intersection of clinical 
-          neuroscience and machine learning</mark>. Not a brochure. A living 
-          record: of EEG signals decoded, algorithms evaluated, and knowledge 
+          professional presence built at <mark>the intersection of clinical
+          neuroscience and machine learning</mark>. Not a brochure. A living
+          record: of EEG signals decoded, algorithms evaluated, and knowledge
           contributed at the frontier of pediatric neurocritical care.
         </p>
 
         <p class="body-text">
-          Dynamic Data Scientist with deep domain expertise as a Clinical 
-          Neurophysiologist at the University Children's Hospital Zürich (KISPI). 
-          Passionate about <span class="hl-subtle">Healthcare Foundation Models · 
+          Dynamic Data Scientist with deep domain expertise as a Clinical
+          Neurophysiologist at the University Children's Hospital Zürich (KISPI).
+          Passionate about <span class="hl-subtle">Healthcare Foundation Models ·
           XAI · Generalizability · Clinical Biomarkers · Precision Medicine.</span>
         </p>
 
@@ -71,17 +219,17 @@
         <div class="section-label">§ What you will find here</div>
 
         <div class="home-grid">
-          <div class="home-card" onclick="navigate('research')">
-            <div class="hc-num">001</div>
-            <div class="hc-title">Research &amp; Publications</div>
-            <div class="hc-body">Peer-reviewed publications and conference abstracts in EEG analysis, burst suppression detection, and unsupervised deep learning for clinical neurophysiology.</div>
-            <div class="hc-arrow">→ View Archive</div>
-          </div>
           <div class="home-card" onclick="navigate('projects')">
-            <div class="hc-num">002</div>
+            <div class="hc-num">001</div>
             <div class="hc-title">Projects &amp; Case Studies</div>
             <div class="hc-body">From M.Sc. thesis ML pipelines to EEG annotation infrastructure and real-time neuromonitoring systems. Method, stack, outcome, and status documented.</div>
             <div class="hc-arrow">→ View Projects</div>
+          </div>
+          <div class="home-card" onclick="navigate('research')">
+            <div class="hc-num">002</div>
+            <div class="hc-title">Research &amp; Publications</div>
+            <div class="hc-body">Peer-reviewed publications and conference abstracts in EEG analysis, burst suppression detection, and unsupervised deep learning for clinical neurophysiology.</div>
+            <div class="hc-arrow">→ View Archive</div>
           </div>
           <div class="home-card" onclick="navigate('cv')">
             <div class="hc-num">003</div>
@@ -99,18 +247,14 @@
 
         <hr class="dashed-rule"/>
 
-        <!-- DECISION TREE -->
-        <div class="dt-section">
-          <div class="dt-wrap">
-            <span class="hand dt-root">The signal persists.</span>
-            <div class="dt-branches">
-              <div class="dt-b"><mark>is analyzed</mark> — signal by signal, patient by patient</div>
-              <div class="dt-b"><mark>is generalized</mark> — validated across heterogeneous and unseen data</div>
-              <div class="dt-b"><mark>is documented</mark> — peer-reviewed, open, attributed</div>
-              <div class="dt-b dead">not arriving — is not an option</div>
-            </div>
+        <!-- DECISION TREE — root removed, branches stand alone -->
+        <div class="dt-section-branches">
+          <div class="dt-branches">
+            <div class="dt-b"><mark>is analyzed</mark> — signal by signal, patient by patient</div>
+            <div class="dt-b"><mark>is generalized</mark> — validated across heterogeneous and unseen data</div>
+            <div class="dt-b"><mark>is documented</mark> — peer-reviewed, open, attributed</div>
+            <div class="dt-b dead">not arriving — is not an option</div>
           </div>
-          <div class="dt-foot">at the portfolio meeting · III · 2026</div>
         </div>
 
         <!-- SIGN BLOCK -->
@@ -125,10 +269,6 @@
           </div>
         </div>
 
-        <!-- STAMP -->
-        <div class="stamp" aria-hidden="true">
-          <div class="stamp-inner">EEG<br>ML<br>KISPI<br>2026</div>
-        </div>
 
       </div>
     </section>
@@ -138,17 +278,27 @@
     ════════════════════ -->
     <section class="page" id="page-research">
       <div class="page-inner">
-        <span class="page-num">0 0 2</span>
+        <span class="page-num">0 0 3</span>
 
         <header class="letterhead">
           <div class="lh-left">
-            <div class="lh-brand">Research Archive</div>
-            <div class="lh-rule"></div>
+            <div class="lh-brand-group">
+              <div class="lh-brand">Research Archive</div>
+              <div class="lh-rule"></div>
+            </div>
             <div class="lh-sub">Publications · Conference Abstracts · Posters</div>
           </div>
           <div class="lh-right">
-            <strong>Archival Record</strong>
-            Updated March 2026
+            <div class="nav-dropdown">
+              <span class="nav-index-trigger">INDEX</span>
+              <div class="nav-index-menu">
+                <button onclick="navigate('home')">CASA</button>
+                <button onclick="navigate('projects')">PROJECTS</button>
+                <button onclick="navigate('research')">RESEARCH ARCHIVE</button>
+                <button onclick="navigate('cv')">CV</button>
+                <button onclick="navigate('contact')">CONTACT</button>
+              </div>
+            </div>
           </div>
         </header>
 
@@ -172,10 +322,10 @@
                 · 6th Swiss Congress of Clinical Neurophysiology, 2025
               </div>
               <p class="pub-abstract">
-                Assessed the generalizability of a pre-validated unsupervised algorithm (BSUPP) for Burst Suppression 
-                pattern (BSP) detection on pediatric continuous EEG data (~12 hours, 4 PICU patients, University 
-                Children's Hospital Zürich). Developed a novel ensemble architecture combining BSUPP with a denoising 
-                Variational Autoencoder (dVAE), improving AUROC from 0.41 to 0.53 — a 30% increase — with perfect 
+                Assessed the generalizability of a pre-validated unsupervised algorithm (BSUPP) for Burst Suppression
+                pattern (BSP) detection on pediatric continuous EEG data (~12 hours, 4 PICU patients, University
+                Children's Hospital Zürich). Developed a novel ensemble architecture combining BSUPP with a denoising
+                Variational Autoencoder (dVAE), improving AUROC from 0.41 to 0.53 — a 30% increase — with perfect
                 recall of 1.00 for burst detection on single-patient inference.
               </p>
               <div class="pub-tags">
@@ -198,11 +348,11 @@
                 Affiliations: University Children's Hospital Zürich (KISPI) · HSLU · University Hospital Zürich (USZ)
               </div>
               <p class="pub-abstract">
-                Poster presentation evaluating a dVAE+BSUPP ensemble architecture for automated BSP detection. Phase I 
-                tested the BSUPP surrogate model on ~12 hours of unseen pediatric cEEG data (4 PICU patients, status 
-                epilepticus), revealing limited direct generalizability (mean AUROC = 0.41). Phase II developed the 
-                novel ensemble through extensive hyperparameter experiments, achieving AUROC = 0.53 — a 30% 
-                improvement — with perfect burst recall of 1.00 on single-patient inference. Highlights unsupervised 
+                Poster presentation evaluating a dVAE+BSUPP ensemble architecture for automated BSP detection. Phase I
+                tested the BSUPP surrogate model on ~12 hours of unseen pediatric cEEG data (4 PICU patients, status
+                epilepticus), revealing limited direct generalizability (mean AUROC = 0.41). Phase II developed the
+                novel ensemble through extensive hyperparameter experiments, achieving AUROC = 0.53 — a 30%
+                improvement — with perfect burst recall of 1.00 on single-patient inference. Highlights unsupervised
                 deep learning's potential for real-time automated BSP detection in clinical contexts.
               </p>
               <div class="pub-tags">
@@ -225,11 +375,11 @@
                 HSLU – Lucerne University of Applied Sciences and Arts · Feb 2023 – Sep 2025
               </div>
               <p class="pub-abstract">
-                Master's thesis investigating the generalizability of unsupervised ML algorithms for burst suppression 
-                pattern detection in pediatric cEEG data. Conducted in collaboration with the ICU Cockpit Research Group 
-                at USZ. Built a Label Studio annotation pipeline, curated and pre-processed EEG signals from 4 PICU 
-                patients with status epilepticus, and developed the dVAE+BSUPP ensemble architecture through 
-                hyperparameter optimisation experiments. Addresses the critical gap that fewer than 1% of 10,462 
+                Master's thesis investigating the generalizability of unsupervised ML algorithms for burst suppression
+                pattern detection in pediatric cEEG data. Conducted in collaboration with the ICU Cockpit Research Group
+                at USZ. Built a Label Studio annotation pipeline, curated and pre-processed EEG signals from 4 PICU
+                patients with status epilepticus, and developed the dVAE+BSUPP ensemble architecture through
+                hyperparameter optimisation experiments. Addresses the critical gap that fewer than 1% of 10,462
                 healthcare ML algorithms reported external validation.
               </p>
               <div class="pub-tags">
@@ -260,23 +410,33 @@
     ════════════════════ -->
     <section class="page" id="page-projects">
       <div class="page-inner">
-        <span class="page-num">0 0 3</span>
+        <span class="page-num">0 0 2</span>
 
         <header class="letterhead">
           <div class="lh-left">
-            <div class="lh-brand">Index</div>
-            <div class="lh-rule"></div>
+            <div class="lh-brand-group">
+              <div class="lh-brand">Projects</div>
+              <div class="lh-rule"></div>
+            </div>
             <div class="lh-sub">Applied Work · Tools · Case Studies</div>
           </div>
           <div class="lh-right">
-            <strong>Case Studies</strong>
-            Method · Stack · Outcome
+            <div class="nav-dropdown">
+              <span class="nav-index-trigger">INDEX</span>
+              <div class="nav-index-menu">
+                <button onclick="navigate('home')">CASA</button>
+                <button onclick="navigate('projects')">PROJECTS</button>
+                <button onclick="navigate('research')">RESEARCH ARCHIVE</button>
+                <button onclick="navigate('cv')">CV</button>
+                <button onclick="navigate('contact')">CONTACT</button>
+              </div>
+            </div>
           </div>
         </header>
 
         <p class="body-text">
-          Applied research outputs, clinical data infrastructure, and ML systems. 
-          Each project is a <mark>documented artefact</mark> — method, stack, 
+          Applied research outputs, clinical data infrastructure, and ML systems.
+          Each project is a <mark>documented artefact</mark> — method, stack,
           outcome, and status recorded with archival precision.
         </p>
 
@@ -374,13 +534,23 @@
 
         <header class="letterhead">
           <div class="lh-left">
-            <div class="lh-brand">Curriculum Vitæ</div>
-            <div class="lh-rule"></div>
+            <div class="lh-brand-group">
+              <div class="lh-brand">Curriculum Vitæ</div>
+              <div class="lh-rule"></div>
+            </div>
             <div class="lh-sub">Living Document · Updated March 2026</div>
           </div>
           <div class="lh-right">
-            <strong>Data Scientist · Researcher</strong>
-            Zürich, Switzerland
+            <div class="nav-dropdown">
+              <span class="nav-index-trigger">INDEX</span>
+              <div class="nav-index-menu">
+                <button onclick="navigate('home')">CASA</button>
+                <button onclick="navigate('projects')">PROJECTS</button>
+                <button onclick="navigate('research')">RESEARCH ARCHIVE</button>
+                <button onclick="navigate('cv')">CV</button>
+                <button onclick="navigate('contact')">CONTACT</button>
+              </div>
+            </div>
           </div>
         </header>
 
@@ -391,7 +561,7 @@
             <p class="cv-bio">Dynamic Data Scientist and researcher with deep domain expertise as a Clinical Neurophysiologist. Adept at utilising machine learning algorithms to analyse complex biomedical data, driving actionable insights, and impactful research. Passionate about advancing healthcare technologies through innovative solutions and interdisciplinary collaboration.</p>
           </div>
           <div class="cv-contacts">
-            <a href="/cdn-cgi/l/email-protection#bbf8dac9d7d4c895fac9c1dadcdafbd0d2c8cbd295cec1d395d8d3"><span class="__cf_email__" data-cfemail="7b381a09171408553a09011a1c1a3b1012080b12550e0113551813">[email&#160;protected]</span></a>
+            <a href="mailto:carlos.arzaga@kispi.uzh.ch">carlos.arzaga@kispi.uzh.ch</a>
             <a href="tel:+41768052521">+41 76 805 25 21</a>
             <a href="https://github.com/carzaga1" target="_blank">github.com/carzaga1</a>
             <a href="https://doi.org/10.3390/ctn9040045" target="_blank">DOI · Publication</a>
@@ -540,7 +710,7 @@
         </div>
 
         <div class="cv-print-btn-row">
-          <button class="print-btn" onclick="window.print()">↓ Export as PDF</button>
+          <a class="print-btn" href="src/assets/Carlos_Arzaga_CV_2026.pdf" download="Carlos_Arzaga_CV_2026.pdf">↓ Export as PDF</a>
         </div>
 
       </div>
@@ -555,14 +725,23 @@
 
         <header class="letterhead">
           <div class="lh-left">
-            <div class="lh-brand">Contact</div>
-            <div class="lh-rule"></div>
+            <div class="lh-brand-group">
+              <div class="lh-brand">Contact</div>
+              <div class="lh-rule"></div>
+            </div>
             <div class="lh-sub">Reply Slip · Colophon · Method</div>
           </div>
           <div class="lh-right">
-            <strong>Open to</strong>
-            Research Collaborations<br>
-            Clinical Informatics · Consulting
+            <div class="nav-dropdown">
+              <span class="nav-index-trigger">INDEX</span>
+              <div class="nav-index-menu">
+                <button onclick="navigate('home')">CASA</button>
+                <button onclick="navigate('projects')">PROJECTS</button>
+                <button onclick="navigate('research')">RESEARCH ARCHIVE</button>
+                <button onclick="navigate('cv')">CV</button>
+                <button onclick="navigate('contact')">CONTACT</button>
+              </div>
+            </div>
           </div>
         </header>
 
@@ -592,9 +771,9 @@
           <div class="colophon">
             <div class="colophon-section">
               <div class="section-label">§ Direct Contact</div>
-              <p class="body-text" style="font-size:0.78rem; line-height:2;">
+              <p class="body-text" style="font-size:0.78rem; line-height:2; margin-left:0;">
                 <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Email</span><br>
-                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="165577647a79653857646c777177567d7f65667f38636c7e38757e">[email&#160;protected]</a><br>
+                <a href="mailto:carlos.arzaga@kispi.uzh.ch">carlos.arzaga@kispi.uzh.ch</a><br>
                 <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Phone</span><br>
                 +41 76 805 25 21<br>
                 <span style="font-family:var(--f-code); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cobalt);">Location</span><br>
@@ -606,13 +785,13 @@
               <div class="social-row">
                 <a class="social-link" href="https://github.com/carzaga1" target="_blank">GitHub</a>
                 <a class="social-link" href="https://doi.org/10.3390/ctn9040045" target="_blank">Publication</a>
-                <a class="social-link" href="/cdn-cgi/l/email-protection#d99ab8abb5b6aaf798aba3b8beb899b2b0aaa9b0f7aca3b1f7bab1">Email</a>
+                <a class="social-link" href="mailto:carlos.arzaga@kispi.uzh.ch">Email</a>
                 <a class="social-link" href="https://www.kispi.uzh.ch" target="_blank">KISPI</a>
               </div>
             </div>
             <div class="colophon-section">
               <div class="section-label">§ Colophon</div>
-              <p class="body-text" style="font-size:0.76rem;">
+              <p class="body-text" style="font-size:0.76rem; margin-left:0;">
                 Typeset in <em>Libre Baskerville</em> (display),
                 <em>Courier Prime</em> (body), <em>Source Code Pro</em> (labels),
                 and <em>Homemade Apple</em> (voice). Designed constraint-first —
@@ -622,7 +801,7 @@
             </div>
             <div class="colophon-section">
               <div class="section-label">§ Philosophy</div>
-              <p class="body-text" style="font-size:0.75rem; font-style:italic;">
+              <p class="body-text" style="font-size:0.75rem; font-style:italic; margin-left:0;">
                 "The constraint is not a limitation — it is the structure
                 that makes the work legible." Archival clarity over decorative noise.
               </p>
@@ -632,7 +811,7 @@
         </div>
 
         <hr class="dashed-rule"/>
-                <p style="text-align:center; font-family:'Courier Prime',monospace; font-size:0.75rem; opacity:0.45; font-style:italic;">
+        <p style="text-align:center; font-family:'Courier Prime',monospace; font-size:0.75rem; opacity:0.45; font-style:italic;">
           At the time of launch — with full archival rigor —
           <span class="hand" style="font-size:1.2rem; vertical-align:middle; margin-left:0.5rem;">Carlos Arzaga</span>
         </p>
@@ -642,6 +821,59 @@
 
   </main>
 
-  <script src="src/components/main.js"></script>
+  <script>
+/* ═══════════════════════════════════════
+   Sprint 5 — main.js
+   Navigation · Filters · Reveal
+   (topnav removed — INDEX dropdown handles routing)
+═══════════════════════════════════════ */
+
+// ── PAGE NAVIGATION ──
+function navigate(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+  const page = document.getElementById('page-' + pageId);
+  if (page) page.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  triggerReveals();
+}
+
+// ── PUBLICATION FILTER ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.pub-item').forEach(item => {
+      item.style.display =
+        (filter === 'all' || item.dataset.type === filter) ? 'grid' : 'none';
+    });
+  });
+});
+
+// ── REVEAL ON SCROLL ──
+function triggerReveals() {
+  const reveals = document.querySelectorAll('.page.active .reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('v');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+
+  setTimeout(() => {
+    reveals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('v');
+    });
+  }, 80);
+}
+
+// ── INIT ──
+triggerReveals();
+  </script>
 </body>
 </html>

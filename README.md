@@ -1,4 +1,4 @@
-# PortfolioScienceArchival
+# carzaga1.github.io
 **Science & Technology · Archival & Scholarly**
 *Brutalist-archival web presence. Current: Sprint 5.*
 
@@ -14,7 +14,7 @@
 ## File Structure
 
 ```
-PortfolioScienceArchival/
+carzaga1.github.io/
 ├── index.html              ← Single-page app entry (live version)
 ├── vercel.json             ← Vercel deploy config
 ├── README.md
@@ -67,7 +67,7 @@ git push origin main
 
 1. Go to **vercel.com** → Log in with GitHub
 2. Click **"Add New Project"**
-3. Import your `PortfolioScienceArchival` repository
+3. Import your `carzaga1.github.io` repository
 4. Framework preset: **Other**
 5. Root directory: `./` (leave as default)
 6. Click **Deploy**
